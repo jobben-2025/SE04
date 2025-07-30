@@ -1,0 +1,35 @@
+(Files: ls, cp, mv, rm
+Text processing: grep, sed, awk
+View files: cat, less, head, tail
+Editing: nano, vi
+Network: curl
+Version control: git)
+
+caffeniate -d (prevent sleep)
+
+cd ../..
+cd ../WBS/guck
+
+code . (open VScode inside current directory)
+
+'Create a GIThub account and repo - cheatsheet in GoogleDrive!'
+
+'open VScode terminal'
+
+git clone https:::::.git
+cd repo folder name
+la -a (shows .git file and Readme.md) >> .git file is mandatory
+mkdir activities lectures (empty folders will not be synced!)
+cd activities
+touch index.html (> folder will be synced if a file exists)
+
+'to do git commands stay in main folder!'
+git status
+
+git add (updates the repo from local directory)
+git config --global user.email bbb@bbb.de mariblan
+git commit -m "added index.html file" (updates git history)
+git push (will transfer the files to github-repo)
+
+
+
