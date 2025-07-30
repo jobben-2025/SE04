@@ -26,8 +26,9 @@ touch index.html (> folder will be synced if a file exists)
 'to do git commands stay in main folder!'
 git status
 
+# UPDATE GIT-Repo:
 git add (updates the repo from local directory)
-git config --global user.email bbb@bbb.de mariblan
+# git config --global user.email bbb@bbb.de mariblan
 git commit -m "added index.html file" (updates git history)
 git push (will transfer the files to github-repo)
 
