@@ -1,0 +1,71 @@
+Lecture:
+TCP/IP-Model 4 layers
+1 Application Layer (HTTP, HTTPS, SMTP, FTP - closest to users)
+2 Transport Layer (TCP, UDP - manage data segmentation and delivery)
+3 Internet Layer (IP internet protocol, IPv4, IPv6)
+4 Link Layer (physical communication: Ethernet, Wifi, ARP resolves IP to MAC)
+>> simplification, interoperability between systems, scalability
+
+Protocol in action - load a webpage:
+- URL entered > application layer (HTTP+TLS=HTTPS)
+- request sent via TCP > transport layer
+- routed using IP > internet layer
+- travels via Ethernet/wifi > link layer
+
+
+Three-Tier Architecture
+- Presentation Tier (clients)
+- Logic Tier (proxies, servers)
+- Data Tier (databases)
+
+
+Self-Learn: Basic Aspects of HTTP
+
+HTTP as a Protocol for Fetching Resources:
+A single web page may require multiple HTTP requests to fetch resources from different servers, including text, images, videos, and scripts.
+
+HTTP Methods:
+
+GET: Retrieve resources.
+POST: Submit new data to the server.
+PUT: Update resources.
+DELETE: Remove resources.
+
+
+HTTP Status Codes:
+
+200 OK: Request was successful.
+404 Not Found: Requested resource is missing.
+500 Internal Server Error: Server-side issue.
+HTTP relies on TCP for connections.
+
+
+Components:
+Client (requests, parses+render), server (respond to request, serve content), proxies (cache, filter, act as gateway)
+
+
+HTTP Over Time: Evolution and Enhancements
+
+HTTP/1.1:
+Introduced persistent connections and header improvements.
+HTTP/1.0 had new connection per request.
+
+HTTP/2:
+Allowed multiplexing of multiple requests over a single connection.
+Improved performance with features like server push and header compression.
+
+HTTP/3:
+Moves from TCP to QUIC, a UDP-based protocol designed for faster, more reliable transport.
+
+
+HTTP in Modern Web Development:
+
+APIs: HTTP is the foundation of RESTful APIs used for communication between services.
+
+Web Performance: Techniques like caching, compression, and HTTP/2 optimize resource delivery.
+
+Security: HTTPS ensures data protection and user trust.
+
+
+
+
