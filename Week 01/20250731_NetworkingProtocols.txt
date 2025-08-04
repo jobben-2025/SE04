@@ -67,5 +67,771 @@ Web Performance: Techniques like caching, compression, and HTTP/2 optimize resou
 Security: HTTPS ensures data protection and user trust.
 
 
+EXERCISE - interactive exploration:
+
+3. Explore Different Websites
+
+Visit at least three websites:
+A basic website (e.g., https://example.com).
+A multimedia-rich site (e.g., YouTube or a news site).
+An e-commerce site (e.g., Amazon or another shopping platform).
+Compare the number and types of requests made by these sites. Which sites make the most requests? Why?
+
+- way more requests as more pictures (youtube) or data from databases (shops) is requested >> normal website < youtube/media sites < ecommerce+shopping websites
+
+
+
+4. Take Notes
+
+As you explore, jot down your observations and questions. Consider:
+
+What HTTP methods (e.g., GET, POST) are most commonly used?
+- F12 developer mode
+- Console (display http methods)
+
+golem.de:
+14 GET
+10 POST
+
+t3n.de
+2 POST
+30+ GET
+
+Mostly CDN (content delivery network = media files from other servers) and trackers/ads (different suppliers/servers).
+
+
+How do status codes (e.g., 200 OK, 404 Not Found) vary across requests?
+
+- Network Tab
+99% it is 200 (delivered)
+some 204 (no content)
+some 401 (unauthorized)
+
+What patterns do you notice in the headers or response content?
+- Network tab, click on item for details (headers, payload, preview, response tabs)
+
+HEADERS tag:
+- contain the server ip and port no. (77.247.84.169:443)
+- display compression used (gzip)
+- show cache-control (no-cache)
+- cookie (authentification-id, consent dsgvo, referer-url, browser-type browser-name and version, hostname of website-server, operating system "macOS", complete user-agent = machine, OS, web-engine used, browser+version installed)
+
+RESPONSE tab:
+- contains simple "OK"
+- can also be file (displaying js-code or hex-code of binary file or json/css code)
+
+SOURCES-PAGE tab:
+- display files/media sorted by domain name/server and current path on host
+
+https://t3n.de/news/wp-content/plugins/wp-sentry-integration/public/wp-sentry-browser.tracing.min.js?ver=8.3.1
+contains JS-code:
+/*! @sentry/browser (Performance Monitoring) 8.46.0 (5387fde) | https://github.com/getsentry/sentry-javascript */
+- recent version would be 8.5.0
+https://github.com/stayallive/wp-sentry
+Meaning the calling function is not updated since 8.3.1 (7 months) and delivered file somewhat 2months old; 8This plugin can report PHP errors and Browser (JavaScript) errors to Sentry:
+https://docs.sentry.io/platforms/javascript/configuration/integrations/browsertracing/
+
+https://t3n.de/news/wp-json/
+
+
+5. Prepare Questions for Class
+
+Think about what you’d like to know more about, such as:
+
+Why are certain resources fetched from different servers?
+
+What do specific headers mean?
+
+> 
+
+
+
+
+
+TERMINAL COMMANDS FOR DIAGNOSTICS:
+
+PING:
+ping google.com
+PING google.com (142.250.185.110): 56 data bytes
+64 bytes from 142.250.185.110: icmp_seq=0 ttl=115 time=21.223 ms
+64 bytes from 142.250.185.110: icmp_seq=1 ttl=115 time=23.663 ms
+64 bytes from 142.250.185.110: icmp_seq=2 ttl=115 time=17.565 ms
+^C
+--- google.com ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 17.565/20.817/23.663/2.506 ms
+
+ping 172.17.72.254
+PING 172.17.72.254 (172.17.72.254): 56 data bytes
+64 bytes from 172.17.72.254: icmp_seq=0 ttl=64 time=28.228 ms
+64 bytes from 172.17.72.254: icmp_seq=1 ttl=64 time=6.819 ms
+64 bytes from 172.17.72.254: icmp_seq=2 ttl=64 time=6.814 ms
+^C
+--- 172.17.72.254 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 6.814/13.954/28.228/10.093 ms
+
+
+TRACEROUTE:
+traceroute google.com
+traceroute google.com
+traceroute to google.com (142.250.185.110), 64 hops max, 40 byte packets
+ 1  172.10.10.254 (172.10.10.254)  0.833 ms  0.491 ms  0.346 ms
+ 2  192.168.178.1 (192.168.178.1)  1.562 ms  1.350 ms  1.639 ms
+ 3  ip-078-042-209-253.um17.pools.vodafone-ip.de (78.42.209.253)  10.949 ms  15.158 ms
+    ip-078-042-209-252.um17.pools.vodafone-ip.de (78.42.209.252)  9.412 ms
+ 4  ip-081-210-252-166.um21.pools.vodafone-ip.de (81.210.252.166)  12.670 ms  51.797 ms  20.783 ms
+ 5  * de-str01c-rc1-ae-34-0.aorta.net (84.116.190.217)  18.061 ms  23.483 ms
+ 6  84.116.190.94 (84.116.190.94)  19.533 ms  21.347 ms
+    de-fra04d-rc1-ae-10-0.aorta.net (84.116.140.205)  20.242 ms
+ 7  84.116.190.94 (84.116.190.94)  18.934 ms  18.445 ms  19.265 ms
+ 8  * * *
+ 9  66.249.94.244 (66.249.94.244)  21.736 ms *
+    172.253.71.88 (172.253.71.88)  22.186 ms
+10  216.239.42.174 (216.239.42.174)  39.021 ms  20.855 ms
+    142.250.213.212 (142.250.213.212)  20.641 ms
+11  192.178.73.111 (192.178.73.111)  46.099 ms
+    fra16s49-in-f14.1e100.net (142.250.185.110)  31.514 ms
+    142.250.226.149 (142.250.226.149)  34.236 ms
+
+nslookup amazon.de
+Server:		172.10.10.254
+Address:	172.10.10.254#53
+
+Non-authoritative answer:
+Name:	amazon.de
+Address: 54.239.39.102
+Name:	amazon.de
+Address: 52.95.120.34
+Name:	amazon.de
+Address: 176.32.108.185
+
+
+nslookup google.com
+Server:		172.10.10.254
+Address:	172.10.10.254#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.74.206
+
+
+nslookup facebook.com
+Server:		172.10.10.254
+Address:	172.10.10.254#53
+
+Non-authoritative answer:
+Name:	facebook.com
+Address: 157.240.253.35
+
+
+netstat -an
+Active Internet connections (including servers) Google, Amazon, Amazon, Apple:
+Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)    
+tcp4       0      0  172.10.10.82.49233     142.251.168.188.5228   ESTABLISHED
+tcp4       0      0  172.10.10.82.49191     52.3.167.79.443        ESTABLISHED
+tcp4       0      0  172.10.10.82.49185     3.68.18.70.443         ESTABLISHED
+tcp4       0      0  172.10.10.82.49768     17.57.146.55.5223      ESTABLISHED
+
+
+HTTPS port 443 >> webbrowser
+
+5228	tcp,udp	android	Port 5228 is used by the Google Playstore (Android market). Google talk also uses ports 443, 5222 and 5228. Google Chrome user settings sync (facorites, history, passwords) uses port 5228
+GoogleMeet/GoogleChrome application
+
+Port 5223 TCP Push-Mitteilungsdienst von Apple (APNS)
+iCloud DAV-Dienste (Kontakte, Kalender, Lesezeichen), Push-Mitteilungen, FaceTime, iMessage, Game Center, Fotostream
+MacBook Air connectivity of OS?
+
+
+6. Take notes
+
+As you explore these commands, jot down your observations and questions, such as:
+
+What happens when you ping an unreachable address?
+ping: cannot resolve xyz.yxz: Unknown host
+
+Why do some traceroute hops take longer than others?
+supposedly the dns server takes more time to respond (hardware limited) or the location of that server is geographically more distanced
+
+How do DNS queries differ for various domains?
+some return a single IP address and some return multiple (different servers, possibly load balancing)
+
+
+7. Prepare questions for class
+
+Think about what you’d like to learn more about, for example:
+
+How does ping measure packet loss?
+-Failed to reach destination - no return.
+
+What do the different parts of a traceroute output mean?
+A) EACH HOP is a location where the name request is being handled and talked to until the package finally reaches its destination. (Think every station that handles your mail package sent from one mail station in Stuttgart to distribution centers until it reaches the town/address in another country)
+1. hop is local router in LAN
+2. - y. hop are the dns servers/gateways/proxies to the destination
+z. hop is the destination domain/server
+
+How can nslookup be used to troubleshoot DNS issues?
+-If a name is not resolved to an IP address there can be a DNS server down (if a fixed DNS is used) or a configuration error (if just now some DNS settings have been changed)
+
+-Using nslookup in interactive mode allows to use other DNS servers specified:
+nslookup lserver domain
+           Change the default server to domain; lserver uses the initial server to look up information about domain, while server uses the current default server. If an authoritative answer can't be found, the names of servers that might have the answer are returned.
+
+            [no]debug
+               Turn on or off the display of the full response packet and any
+               intermediate response packets when searching.
+
+               (Default = nodebug; abbreviation = [no]deb)
+
+            [no]d2
+               Turn debugging mode on or off. This displays more about what nslookup
+               is doing.
+
+domain=name
+               Sets the search list to name.
+
+               FILES: /etc/resolv.conf
+
+
+
+
+
+
+whois 142.251.168.188
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.arin.net
+
+inetnum:      142.0.0.0 - 142.255.255.255
+organisation: Administered by ARIN
+status:       LEGACY
+
+whois:        whois.arin.net
+
+changed:      1993-05
+source:       IANA
+
+# whois.arin.net
+
+NetRange:       142.250.0.0 - 142.251.255.255
+CIDR:           142.250.0.0/15
+NetName:        GOOGLE
+NetHandle:      NET-142-250-0-0-1
+Parent:         NET142 (NET-142-0-0-0-0)
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Google LLC (GOGL)
+RegDate:        2012-05-24
+Updated:        2012-05-24
+Ref:            https://rdap.arin.net/registry/ip/142.250.0.0
+
+
+whois 52.3.167.79
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.arin.net
+
+inetnum:      52.0.0.0 - 52.255.255.255
+organisation: Administered by ARIN
+status:       LEGACY
+
+whois:        whois.arin.net
+
+changed:      1991-12
+source:       IANA
+
+# whois.arin.net
+
+NetRange:       52.0.0.0 - 52.79.255.255
+CIDR:           52.0.0.0/10, 52.64.0.0/12
+NetName:        AT-88-Z
+NetHandle:      NET-52-0-0-0-1
+Parent:         NET52 (NET-52-0-0-0-0)
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Amazon Technologies Inc. (AT-88-Z)
+RegDate:        1991-12-19
+Updated:        2024-02-05
+Comment:        Geofeed http://ip-ranges.amazonaws.com/geo-ip-feed.csv
+Ref:            https://rdap.arin.net/registry/ip/52.0.0.0
+
+
+
+OrgName:        Amazon Technologies Inc.
+OrgId:          AT-88-Z
+Address:        410 Terry Ave N.
+City:           Seattle
+StateProv:      WA
+PostalCode:     98109
+Country:        US
+RegDate:        2011-12-08
+Updated:        2024-01-24
+
+
+
+whois 52.3.167.79
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.arin.net
+
+inetnum:      52.0.0.0 - 52.255.255.255
+organisation: Administered by ARIN
+status:       LEGACY
+
+whois:        whois.arin.net
+
+changed:      1991-12
+source:       IANA
+
+# whois.arin.net
+
+NetRange:       52.0.0.0 - 52.79.255.255
+CIDR:           52.0.0.0/10, 52.64.0.0/12
+NetName:        AT-88-Z
+NetHandle:      NET-52-0-0-0-1
+Parent:         NET52 (NET-52-0-0-0-0)
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Amazon Technologies Inc. (AT-88-Z)
+RegDate:        1991-12-19
+Updated:        2024-02-05
+Comment:        Geofeed http://ip-ranges.amazonaws.com/geo-ip-feed.csv
+Ref:            https://rdap.arin.net/registry/ip/52.0.0.0
+
+
+
+OrgName:        Amazon Technologies Inc.
+OrgId:          AT-88-Z
+Address:        410 Terry Ave N.
+City:           Seattle
+StateProv:      WA
+PostalCode:     98109
+Country:        US
+RegDate:        2011-12-08
+Updated:        2024-01-24
+
+
+WHOIS 17.57.146.55
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.arin.net
+
+inetnum:      17.0.0.0 - 17.255.255.255
+organisation: Apple Computer Inc.
+status:       LEGACY
+
+whois:        whois.arin.net
+
+changed:      1992-07
+source:       IANA
+
+# whois.arin.net
+
+NetRange:       17.0.0.0 - 17.255.255.255
+CIDR:           17.0.0.0/8
+NetName:        APPLE-WWNET
+NetHandle:      NET-17-0-0-0-1
+Parent:          ()
+NetType:        Direct Allocation
+OriginAS:       
+Organization:   Apple Inc. (APPLEC-1-Z)
+RegDate:        1990-04-16
+Updated:        2025-04-02
+Comment:        Geofeed https://ip-geolocation.apple.com
+Ref:            https://rdap.arin.net/registry/ip/17.0.0.0
+
+
+OrgName:        Apple Inc.
+OrgId:          APPLEC-1-Z
+Address:        One Apple Park Way
+City:           Cupertino
+StateProv:      CA
+PostalCode:     95014
+Country:        US
+RegDate:        2009-12-14
+Updated:        2025-04-22
+Ref:            https://rdap.arin.net/registry/entity/APPLEC-1-Z
+
+
+OrgTechHandle: IPHOS7-ARIN
+OrgTechName:   IP Hostmaster
+OrgTechPhone:  +1-408-996-1010 
+OrgTechEmail:  ip-hostmaster@group.apple.com
+OrgTechRef:    https://rdap.arin.net/registry/entity/IPHOS7-ARIN
+
+OrgAbuseHandle: APPLE11-ARIN
+OrgAbuseName:   Apple Abuse
+OrgAbusePhone:  +1-408-974-7777 
+OrgAbuseEmail:  abuse@apple.com
+OrgAbuseRef:    https://rdap.arin.net/registry/entity/APPLE11-ARIN
+
+RTechHandle: APPLE141-ARIN
+RTechName:   Apple Inc
+RTechPhone:  +1-408-996-1010 
+RTechEmail:  ip-hostmaster@group.apple.com
+RTechRef:    https://rdap.arin.net/registry/entity/APPLE141-ARIN
+
+
+
+
+
+
+
+
+netstat -an
+Active Internet connections (including servers)
+Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)    
+tcp4       0      0  172.10.10.82.49233     142.251.168.188.5228   ESTABLISHED
+tcp4       0      0  172.10.10.82.49191     52.3.167.79.443        ESTABLISHED
+tcp4       0      0  172.10.10.82.49185     3.68.18.70.443         ESTABLISHED
+tcp4       0      0  172.10.10.82.49768     17.57.146.55.5223      ESTABLISHED
+udp4       0      0  *.50455                *.*                               
+udp46      0      0  *.64556                *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp6       0      0  *.5353                 *.*                               
+udp4       0      0  *.5353                 *.*                               
+udp46      0      0  *.*                    *.*                               
+udp4       0      0  *.*                    *.*                               
+udp4       0      0  *.137                  *.*                               
+udp4       0      0  *.138                  *.*                               
+Active Multipath Internet connections
+Proto/ID  Flags      Local Address          Foreign Address        (state)    
+icm6       0      0  *.*                    *.*                               
+Active LOCAL (UNIX) domain sockets
+Address          Type   Recv-Q Send-Q            Inode             Conn             Refs          Nextref Addr
+956ea8a2fad20305 stream      0      0                0 caedeea12c2c35b6                0                0 /var/run/mDNSResponder
+caedeea12c2c35b6 stream      0      0                0 956ea8a2fad20305                0                0
+74d50f6fb59fbc2f stream      0      0 64772475568b6236                0                0                0 /tmp/Sublime Text.4cff18d2bab96a93366319a9e0fa060d.7fe4771c008a22eb763df47d19e2c6aa.sock
+3de1dc5c7443e3dc stream      0      0                0 663d10db40e9acd1                0                0 /var/run/mDNSResponder
+663d10db40e9acd1 stream      0      0                0 3de1dc5c7443e3dc                0                0
+9e5a1794ae0848a1 stream      0      0                0 644229cec562b073                0                0 /var/run/mDNSResponder
+644229cec562b073 stream      0      0                0 9e5a1794ae0848a1                0                0
+ded563578938d03e stream      0      0                0 9a3a0cf513487a7c                0                0 /var/run/mDNSResponder
+9a3a0cf513487a7c stream      0      0                0 ded563578938d03e                0                0
+e35b543e46851eec stream      0      0                0 9bdae40bb26d6bff                0                0 /var/run/mDNSResponder
+9bdae40bb26d6bff stream      0      0                0 e35b543e46851eec                0                0
+7f56d0b355050025 stream      0      0 d6877af3761def3a                0                0                0 /var/folders/39/7yvwl6y17b9_t41vmcx_qx0r0000gn/T/vscode-git-61fe12651b.sock
+194102216e249b6f stream      0      0                0 f27bf70a07a0cbac                0                0 /var/run/mDNSResponder
+f27bf70a07a0cbac stream      0      0                0 194102216e249b6f                0                0
+ 22a9dc96bf2402d stream      0      0                0 e4a1643221d17ab8                0                0 /var/run/mDNSResponder
+e4a1643221d17ab8 stream      0      0                0  22a9dc96bf2402d                0                0
+a46dce5fb12fa0e1 stream      0      0                0 ccdbc3e95cd7bfb1                0                0 /var/run/mDNSResponder
+ccdbc3e95cd7bfb1 stream      0      0                0 a46dce5fb12fa0e1                0                0
+ eda88f6ee808e34 stream      0      0                0 2fb2757dc63852f9                0                0 /var/run/mDNSResponder
+2fb2757dc63852f9 stream      0      0                0  eda88f6ee808e34                0                0
+ 5114585a82b700f stream      0      0                0 2fe838449bee7909                0                0 /var/run/mDNSResponder
+2fe838449bee7909 stream      0      0                0  5114585a82b700f                0                0
+291c879e32ec4344 stream      0      0                0 7264ef1e68f09eea                0                0 /var/run/mDNSResponder
+ef3ecb4265912d4c stream      0      0                0 14a2b3db167fe02c                0                0 /var/run/mDNSResponder
+ea53092e5f3dfc38 stream      0      0                0 b605791ba149e554                0                0 /var/run/mDNSResponder
+7264ef1e68f09eea stream      0      0                0 291c879e32ec4344                0                0
+14a2b3db167fe02c stream      0      0                0 ef3ecb4265912d4c                0                0
+b605791ba149e554 stream      0      0                0 ea53092e5f3dfc38                0                0
+ ab28e5f41fca501 stream      0      0                0 296ec41bd67b2010                0                0 /var/run/mDNSResponder
+296ec41bd67b2010 stream      0      0                0  ab28e5f41fca501                0                0
+8476b190769b31f1 stream      0      0                0 b1d192300d621af3                0                0 /var/run/mDNSResponder
+b1d192300d621af3 stream      0      0                0 8476b190769b31f1                0                0
+5a11b68c548939f7 stream      0      0 265f63f7a29352df                0                0                0 /Users/ben/Library/Application Support/Code/1.10-main.sock
+5c37f89e79399c74 stream      0      0 cdb582b02da9dd26                0                0                0 /var/folders/39/7yvwl6y17b9_t41vmcx_qx0r0000gn/T/scoped_dirJAGanz/SingletonSocket
+d3624561ef6bebc7 stream      0      0                0 6556ca8dca8ad712                0                0 /var/run/usbmuxd
+6556ca8dca8ad712 stream      0      0                0 d3624561ef6bebc7                0                0
+e29e7fa269920b68 stream      0      0 dfe9123195552214                0                0                0 /var/folders/39/7yvwl6y17b9_t41vmcx_qx0r0000gn/T/.com.google.Chrome.wFA2pb/SingletonSocket
+8a061c9efeef7eaa stream      0      0                0 3d1287e6e5fb8a97                0                0 /var/run/usbmuxd
+3d1287e6e5fb8a97 stream      0      0                0 8a061c9efeef7eaa                0                0
+6c693129b7e487b4 stream      0      0                0 e1fbb99e431eea09                0                0 /var/run/mDNSResponder
+e1fbb99e431eea09 stream      0      0                0 6c693129b7e487b4                0                0
+9fc5e3360e1fb648 stream      0      0                0 3b5f6e83010d05bb                0                0 /var/run/mDNSResponder
+3b5f6e83010d05bb stream      0      0                0 9fc5e3360e1fb648                0                0
+95fb6a697b85163c stream      0      0                0 dd9559af5b03c7a2                0                0 /var/run/mDNSResponder
+dd9559af5b03c7a2 stream      0      0                0 95fb6a697b85163c                0                0
+602ef0eb971fb79b stream      0      0                0 b6a3abaf1eb6e8f9                0                0 /var/run/mDNSResponder
+b6a3abaf1eb6e8f9 stream      0      0                0 602ef0eb971fb79b                0                0
+6fbb3c0e9273c3f7 stream      0      0 9c7b1e1445f47c38                0                0                0 /var/run/filesystemui.socket
+e960b53ee4cc8d80 stream      0      0 ac3658274bb20c3e                0                0                0 /private/tmp/com.apple.launchd.LsC4H9rIWP/Listeners
+116f8b4a7a9dccdf stream      0      0                0 1e3bd9bda5e6c0ed                0                0 /var/run/mDNSResponder
+1e3bd9bda5e6c0ed stream      0      0                0 116f8b4a7a9dccdf                0                0
+9d04c5e35e11ad0f stream      0      0                0 6d7da121a123af84                0                0
+6d7da121a123af84 stream      0      0                0 9d04c5e35e11ad0f                0                0
+22c5c9bc317548a5 stream      0      0 fc5361cb32aa88d2                0                0                0 /var/run/pppconfd
+a0dcff58a4b6c0bc stream      0      0 77f953cd9da36ec5                0                0                0 /var/run/usbmuxd
+fe4e4ebe9e77b639 stream      0      0 7e89d98da00388b3                0                0                0 /var/rpc/ncalrpc/srvsvc
+9c62b84eda06dc50 stream      0      0 60aea11de406f8fb                0                0                0 /var/rpc/ncacn_np/srvsvc
+3822c472241917d6 stream      0      0 69491e69a42c3f82                0                0                0 /var/rpc/ncalrpc/wkssvc
+7a8f2b2ec14a99aa stream      0      0 904687d7200e151e                0                0                0 /var/rpc/ncacn_np/wkssvc
+1660d2cfc2430414 stream      0      0 d2a4a6ab632620d0                0                0                0 /var/rpc/ncacn_np/mdssvc
+62c7e09bb61dad46 stream      0      0 2857cbb0c35fb112                0                0                0 /var/rpc/ncalrpc/lsarpc
+5cfff723d74fd59a stream      0      0 8bf524613f6913ba                0                0                0 /var/rpc/ncacn_np/lsarpc
+4975cd6ce2e9b20b stream      0      0  3441f6f0c4184f2                0                0                0 /var/run/mDNSResponder
+a073e5b3e9739250 stream      0      0  1cece2d7599f667                0                0                0 /var/run/systemkeychaincheck.socket
+22d039ce79e43075 stream      0      0 e2986cdaf1553464                0                0                0 /private/var/run/.sim_diagnosticd_socket
+eba28c8f5d158de6 stream      0      0 6e6ad4c44e1d2074                0                0                0 /var/run/portmap.socket
+c52b47e946cf53d9 stream      0      0 abad2878ea1361d0                0                0                0 /var/run/vpncontrol.sock
+2058941650b8d837 stream      0      0 e2f1ed9671901b18                0                0                0 /var/rpc/ncalrpc/NETLOGON
+f9e88e4b7c0c0f3c stream      0      0 c59aaa3682c8b5de                0                0                0 /private/var/run/cupsd
+unexpected kind 188 which 0xbc
+c9ce262aeb0545b0 dgram       0      0                0 206c1729edab3c5c                0 11663f19e76e5701
+11663f19e76e5701 dgram       0      0                0 206c1729edab3c5c                0 1a6e5c31b85d3b38
+1a6e5c31b85d3b38 dgram       0      0                0 206c1729edab3c5c                0 fa55ee9e344c3d19
+fa55ee9e344c3d19 dgram       0      0                0 206c1729edab3c5c                0 a2c4e33b4df109e4
+a2c4e33b4df109e4 dgram       0      0                0 206c1729edab3c5c                0 d109eebd01bd36f0
+d109eebd01bd36f0 dgram       0      0                0 206c1729edab3c5c                0 82dfa5726bbf8aa7
+82dfa5726bbf8aa7 dgram       0      0                0 206c1729edab3c5c                0 9dd1052bfdd625a2
+9dd1052bfdd625a2 dgram       0      0                0 206c1729edab3c5c                0 4230f5f4d99ff260
+4230f5f4d99ff260 dgram       0      0                0 206c1729edab3c5c                0 8b42d1ec9b1d3d04
+8b42d1ec9b1d3d04 dgram       0      0                0 206c1729edab3c5c                0 48f719d5b2a6233f
+48f719d5b2a6233f dgram       0      0                0 206c1729edab3c5c                0 b957921f674694b2
+b957921f674694b2 dgram       0      0                0 206c1729edab3c5c                0 e94967c6e90b760a
+e94967c6e90b760a dgram       0      0                0 206c1729edab3c5c                0 4c1989d823aa89c0
+cf5ffb648444a902 dgram       0      0                0 406b6d29102b4b4a 406b6d29102b4b4a                0
+406b6d29102b4b4a dgram       0      0                0 cf5ffb648444a902 cf5ffb648444a902                0
+4c1989d823aa89c0 dgram       0      0                0 206c1729edab3c5c                0 70883a958c5e26f6
+70883a958c5e26f6 dgram       0      0                0 206c1729edab3c5c                0 2061b208fa964177
+2061b208fa964177 dgram       0      0                0 206c1729edab3c5c                0 3803c7bcc0d4eedf
+3803c7bcc0d4eedf dgram       0      0                0 206c1729edab3c5c                0 28c3e18004462a07
+28c3e18004462a07 dgram       0      0                0 206c1729edab3c5c                0 3f4a4a6a22ea8eec
+3f4a4a6a22ea8eec dgram       0      0                0 206c1729edab3c5c                0 745e766cc151007b
+745e766cc151007b dgram       0      0                0 206c1729edab3c5c                0 7b72d82b58f8254d
+7b72d82b58f8254d dgram       0      0                0 206c1729edab3c5c                0 e8a8e1686964ba4d
+e8a8e1686964ba4d dgram       0      0                0 206c1729edab3c5c                0 d40f5fbf7c62ca1c
+d40f5fbf7c62ca1c dgram       0      0                0 206c1729edab3c5c                0 283e8cd3876f5c5a
+283e8cd3876f5c5a dgram       0      0                0 206c1729edab3c5c                0 536edb2aa4451591
+536edb2aa4451591 dgram       0      0                0 206c1729edab3c5c                0  7ad3aa54e24ae21
+ 7ad3aa54e24ae21 dgram       0      0                0 206c1729edab3c5c                0 2de9684154b5aa16
+2de9684154b5aa16 dgram       0      0                0 206c1729edab3c5c                0 4939dc0dc5fa9105
+4939dc0dc5fa9105 dgram       0      0                0 206c1729edab3c5c                0 36727036045025bb
+36727036045025bb dgram       0      0                0 206c1729edab3c5c                0 96053821e6fb6f55
+96053821e6fb6f55 dgram       0      0                0 206c1729edab3c5c                0 fdf5eebb94a87d62
+fdf5eebb94a87d62 dgram       0      0                0 206c1729edab3c5c                0   22ba53ebf76e39
+  22ba53ebf76e39 dgram       0      0                0 206c1729edab3c5c                0 a8f30a67f750409c
+a8f30a67f750409c dgram       0      0                0 206c1729edab3c5c                0 c61f20bb18a7f594
+c61f20bb18a7f594 dgram       0      0                0 206c1729edab3c5c                0 eeaf4a63b0e2d55e
+eeaf4a63b0e2d55e dgram       0      0                0 206c1729edab3c5c                0 f3785bef7193c622
+f3785bef7193c622 dgram       0      0                0 206c1729edab3c5c                0 7d5f94ac9ad93449
+7d5f94ac9ad93449 dgram       0      0                0 206c1729edab3c5c                0 411d5d735e4ba0f2
+411d5d735e4ba0f2 dgram       0      0                0 206c1729edab3c5c                0 4f3034873399adef
+4f3034873399adef dgram       0      0                0 206c1729edab3c5c                0 580c6df9e8e54215
+6c427f7fd35e14d1 dgram       0      0                0 140a547573b8a9b1 140a547573b8a9b1                0
+140a547573b8a9b1 dgram       0      0                0 6c427f7fd35e14d1 6c427f7fd35e14d1                0
+580c6df9e8e54215 dgram       0      0                0 206c1729edab3c5c                0 2a519c36f917c211
+2a519c36f917c211 dgram       0      0                0 206c1729edab3c5c                0 333caa07e84c303b
+333caa07e84c303b dgram       0      0                0 206c1729edab3c5c                0 4478d8cf4ec1fac7
+4478d8cf4ec1fac7 dgram       0      0                0 206c1729edab3c5c                0 56972634a00cd797
+56972634a00cd797 dgram       0      0                0 206c1729edab3c5c                0 b1c6c544b8757956
+b1c6c544b8757956 dgram       0      0                0 206c1729edab3c5c                0 9f91779b514c3329
+9f91779b514c3329 dgram       0      0                0 206c1729edab3c5c                0 bec46404f841d30a
+bec46404f841d30a dgram       0      0                0 206c1729edab3c5c                0 68f1a373321da56b
+68f1a373321da56b dgram       0      0                0 206c1729edab3c5c                0  1479a2feeff0711
+ 1479a2feeff0711 dgram       0      0                0 206c1729edab3c5c                0 cf3e32a5cce676c3
+cf3e32a5cce676c3 dgram       0      0                0 206c1729edab3c5c                0 83ce4adfbf7cd605
+83ce4adfbf7cd605 dgram       0      0                0 206c1729edab3c5c                0 22707c76ed1646e5
+22707c76ed1646e5 dgram       0      0                0 206c1729edab3c5c                0 179aa0e8964f8458
+179aa0e8964f8458 dgram       0      0                0 206c1729edab3c5c                0  d17ee864ba0e13e
+ d17ee864ba0e13e dgram       0      0                0 206c1729edab3c5c                0 12c0b542f609cb5d
+12c0b542f609cb5d dgram       0      0                0 206c1729edab3c5c                0 201bcb78f98fa370
+201bcb78f98fa370 dgram       0      0                0 206c1729edab3c5c                0 ea70148aef7fcc67
+ea70148aef7fcc67 dgram       0      0                0 206c1729edab3c5c                0 21f1f13ae75cd840
+21f1f13ae75cd840 dgram       0      0                0 206c1729edab3c5c                0 22c3c8805933329c
+22c3c8805933329c dgram       0      0                0 206c1729edab3c5c                0 fea9bb15f5d2f977
+fea9bb15f5d2f977 dgram       0      0                0 206c1729edab3c5c                0 92b76132eb4037ee
+92b76132eb4037ee dgram       0      0                0 206c1729edab3c5c                0 e38ff02078add09c
+e38ff02078add09c dgram       0      0                0 206c1729edab3c5c                0 51dfbfd60f8f0805
+51dfbfd60f8f0805 dgram       0      0                0 206c1729edab3c5c                0 20ec1d2fd550f97a
+20ec1d2fd550f97a dgram       0      0                0 206c1729edab3c5c                0 1430c24d54627326
+1430c24d54627326 dgram       0      0                0 206c1729edab3c5c                0 b7a623566b9206af
+b7a623566b9206af dgram       0      0                0 206c1729edab3c5c                0 fc0718863d708b5e
+fc0718863d708b5e dgram       0      0                0 206c1729edab3c5c                0 58e6c9ed065e5020
+58e6c9ed065e5020 dgram       0      0                0 206c1729edab3c5c                0 4c1166e71448e9e7
+4c1166e71448e9e7 dgram       0      0                0 206c1729edab3c5c                0 76a090b665f0f2c1
+76a090b665f0f2c1 dgram       0      0                0 206c1729edab3c5c                0 99be4d4448547d52
+99be4d4448547d52 dgram       0      0                0 206c1729edab3c5c                0 866794820b42ac79
+866794820b42ac79 dgram       0      0                0 206c1729edab3c5c                0 55206eb57cc4e1c3
+55206eb57cc4e1c3 dgram       0      0                0 206c1729edab3c5c                0 529b1f63f3bef688
+529b1f63f3bef688 dgram       0      0                0 206c1729edab3c5c                0 d11bc291b43767aa
+d11bc291b43767aa dgram       0      0                0 206c1729edab3c5c                0 6a0b1a3cef14287f
+6a0b1a3cef14287f dgram       0      0                0 206c1729edab3c5c                0 322b18bf511de2a0
+322b18bf511de2a0 dgram       0      0                0 206c1729edab3c5c                0 fc6db0c7129e9829
+fc6db0c7129e9829 dgram       0      0                0 206c1729edab3c5c                0 738888deba207c2a
+738888deba207c2a dgram       0      0                0 206c1729edab3c5c                0 deb8ba1ef752cf47
+deb8ba1ef752cf47 dgram       0      0                0 206c1729edab3c5c                0 88e593bc7ab63508
+88e593bc7ab63508 dgram       0      0                0 206c1729edab3c5c                0 360ae4c3fc6eeba6
+360ae4c3fc6eeba6 dgram       0      0                0 206c1729edab3c5c                0 9c77cf764278da7b
+9c77cf764278da7b dgram       0      0                0 206c1729edab3c5c                0 18ca4e72c82fc335
+18ca4e72c82fc335 dgram       0      0                0 206c1729edab3c5c                0 58ba9b250e7d878f
+58ba9b250e7d878f dgram       0      0                0 206c1729edab3c5c                0 d6308dfcb382efb8
+d6308dfcb382efb8 dgram       0      0                0 206c1729edab3c5c                0 372376cfc86fa908
+372376cfc86fa908 dgram       0      0                0 206c1729edab3c5c                0 3815c507a58aa39e
+3815c507a58aa39e dgram       0      0                0 206c1729edab3c5c                0 cef6748d68520719
+20408a62549edfeb dgram       0      0                0 be0e250f8efb31fe be0e250f8efb31fe                0
+be0e250f8efb31fe dgram       0      0                0 20408a62549edfeb 20408a62549edfeb                0
+cef6748d68520719 dgram       0      0                0 206c1729edab3c5c                0 5c3ad591687cad05
+5c3ad591687cad05 dgram       0      0                0 206c1729edab3c5c                0 2c692d6e6d5a25df
+2c692d6e6d5a25df dgram       0      0                0 206c1729edab3c5c                0 50bfa0c8c2f6b7c4
+50bfa0c8c2f6b7c4 dgram       0      0                0 206c1729edab3c5c                0 515f99b5f662b268
+515f99b5f662b268 dgram       0      0                0 206c1729edab3c5c                0 a2903abfec2a5600
+a2903abfec2a5600 dgram       0      0                0 206c1729edab3c5c                0 110be47fbc7565c1
+110be47fbc7565c1 dgram       0      0                0 206c1729edab3c5c                0 5ae91a1f26baf8d8
+5ae91a1f26baf8d8 dgram       0      0                0 206c1729edab3c5c                0 8be60cba47febfca
+8be60cba47febfca dgram       0      0                0 206c1729edab3c5c                0 6966f39d045521b1
+be29348d7086a599 dgram       0      0                0 89530b7bead98433 89530b7bead98433                0
+89530b7bead98433 dgram       0      0                0 be29348d7086a599 be29348d7086a599                0
+ 718828e800009f3 dgram       0      0                0 8b0e0e6b1e175c59 8b0e0e6b1e175c59                0
+8b0e0e6b1e175c59 dgram       0      0                0  718828e800009f3  718828e800009f3                0
+6966f39d045521b1 dgram       0      0                0 206c1729edab3c5c                0 2134ad1875e5dcaa
+2134ad1875e5dcaa dgram       0      0                0 206c1729edab3c5c                0 8d74d343e55db5c3
+8d74d343e55db5c3 dgram       0      0                0 206c1729edab3c5c                0 6abf04f545dc1c0e
+6abf04f545dc1c0e dgram       0      0                0 206c1729edab3c5c                0 aec3e74741138b5c
+32726013b187f6cf dgram       0      0                0 310eca4b451533a0 310eca4b451533a0                0
+310eca4b451533a0 dgram       0      0                0 32726013b187f6cf 32726013b187f6cf                0
+aec3e74741138b5c dgram       0      0                0 206c1729edab3c5c                0 b4651f4f6b1f93c7
+b4651f4f6b1f93c7 dgram       0      0                0 206c1729edab3c5c                0 4e8fbfea3c204752
+4e8fbfea3c204752 dgram       0      0                0 206c1729edab3c5c                0 38c874aae58f04b6
+38c874aae58f04b6 dgram       0      0                0 206c1729edab3c5c                0 2f84cc94624b6714
+2f84cc94624b6714 dgram       0      0                0 206c1729edab3c5c                0                0
+206c1729edab3c5c dgram       0      0 de351ab8dae801ed                0 c9ce262aeb0545b0                0 /private//var/run/syslog
+unexpected kind 188 which 0xbc
+Registered kernel control modules
+id       flags    pcbcount rcvbuf   sndbuf   name 
+       1        5        0     8192    32768 com.apple.network.tcp_ccdebug 
+       2       28        1     8192   131072 com.apple.flow-divert 
+       3        1       23    65536    65536 com.apple.net.netagent 
+       4        4        0    65536     2048 com.apple.spmi.nfc 
+       5        4        0    65536     2048 com.apple.uart.debug-console 
+       6        4        0     8192     2048 com.apple.uart.sk.debug-console 
+       7        9        0   524288   524288 com.apple.content-filter 
+       8       29        4   524288   524288 com.apple.net.utun_control 
+       9       21        0    65536    65536 com.apple.net.ipsec_control 
+       a        0       46     8192     2048 com.apple.netsrc 
+       b       18        3     8192     2048 com.apple.network.statistics 
+       c        1        0     8192     2048 com.apple.network.advisory 
+       d        1        0    65536    65536 com.apple.net.rvi_control 
+Active kernel event sockets
+Proto Recv-Q Send-Q vendor  class  subcl
+kevt       0      0      1      1      9
+kevt       0      0      1      1      9
+kevt       0      0      1      1      2
+kevt       0      0      1      6      1
+kevt       0      0      1      1      6
+kevt       0      0      1      1      1
+kevt       0      0      1      1     14
+kevt       0      0      1      1      2
+kevt       0      0      1      1      2
+kevt       0      0      1      1      2
+kevt       0      0      1      1      7
+kevt       0      0      1      1      1
+kevt       0      0      1      1      3
+kevt       0      0      1      1      0
+kevt       0      0      1      3      3
+Active kernel control sockets
+Proto Recv-Q Send-Q   unit     id name
+kctl       0      0      1      2 com.apple.flow-divert
+kctl       0      0      1      3 com.apple.net.netagent
+kctl       0      0      2      3 com.apple.net.netagent
+kctl       0      0      3      3 com.apple.net.netagent
+kctl       0      0      4      3 com.apple.net.netagent
+kctl       0      0      5      3 com.apple.net.netagent
+kctl       0      0      6      3 com.apple.net.netagent
+kctl       0      0      7      3 com.apple.net.netagent
+kctl       0      0      8      3 com.apple.net.netagent
+kctl       0      0      9      3 com.apple.net.netagent
+kctl       0      0     10      3 com.apple.net.netagent
+kctl       0      0     11      3 com.apple.net.netagent
+kctl       0      0     12      3 com.apple.net.netagent
+kctl       0      0     13      3 com.apple.net.netagent
+kctl       0      0     14      3 com.apple.net.netagent
+kctl       0      0     15      3 com.apple.net.netagent
+kctl       0      0     16      3 com.apple.net.netagent
+kctl       0      0     17      3 com.apple.net.netagent
+kctl       0      0     18      3 com.apple.net.netagent
+kctl       0      0     19      3 com.apple.net.netagent
+kctl       0      0     20      3 com.apple.net.netagent
+kctl       0      0     21      3 com.apple.net.netagent
+kctl       0      0     22      3 com.apple.net.netagent
+kctl       0      0     23      3 com.apple.net.netagent
+kctl      80      0      1      8 com.apple.net.utun_control
+kctl       0      0      2      8 com.apple.net.utun_control
+kctl       0      0      3      8 com.apple.net.utun_control
+kctl       0      0      4      8 com.apple.net.utun_control
+kctl       0      0      1     10 com.apple.netsrc
+kctl       0      0      2     10 com.apple.netsrc
+kctl       0      0      3     10 com.apple.netsrc
+kctl       0      0      4     10 com.apple.netsrc
+kctl       0      0      5     10 com.apple.netsrc
+kctl       0      0      6     10 com.apple.netsrc
+kctl       0      0      7     10 com.apple.netsrc
+kctl       0      0      8     10 com.apple.netsrc
+kctl       0      0      9     10 com.apple.netsrc
+kctl       0      0     10     10 com.apple.netsrc
+kctl       0      0     11     10 com.apple.netsrc
+kctl       0      0     12     10 com.apple.netsrc
+kctl       0      0     13     10 com.apple.netsrc
+kctl       0      0     14     10 com.apple.netsrc
+kctl       0      0     15     10 com.apple.netsrc
+kctl       0      0     16     10 com.apple.netsrc
+kctl       0      0     17     10 com.apple.netsrc
+kctl       0      0     18     10 com.apple.netsrc
+kctl       0      0     19     10 com.apple.netsrc
+kctl       0      0     20     10 com.apple.netsrc
+kctl       0      0     21     10 com.apple.netsrc
+kctl       0      0     22     10 com.apple.netsrc
+kctl       0      0     23     10 com.apple.netsrc
+kctl       0      0     24     10 com.apple.netsrc
+kctl       0      0     25     10 com.apple.netsrc
+kctl       0      0     26     10 com.apple.netsrc
+kctl       0      0     27     10 com.apple.netsrc
+kctl       0      0     28     10 com.apple.netsrc
+kctl       0      0     29     10 com.apple.netsrc
+kctl       0      0     30     10 com.apple.netsrc
+kctl       0      0     31     10 com.apple.netsrc
+kctl       0      0     32     10 com.apple.netsrc
+kctl       0      0     33     10 com.apple.netsrc
+kctl       0      0     34     10 com.apple.netsrc
+kctl       0      0     35     10 com.apple.netsrc
+kctl       0      0     36     10 com.apple.netsrc
+kctl       0      0     37     10 com.apple.netsrc
+kctl       0      0     38     10 com.apple.netsrc
+kctl       0      0     39     10 com.apple.netsrc
+kctl       0      0     40     10 com.apple.netsrc
+kctl       0      0     41     10 com.apple.netsrc
+kctl       0      0     42     10 com.apple.netsrc
+kctl       0      0     43     10 com.apple.netsrc
+kctl       0      0     44     10 com.apple.netsrc
+kctl       0      0     45     10 com.apple.netsrc
+kctl       0      0     46     10 com.apple.netsrc
+kctl       0      0      1     11 com.apple.network.statistics
+kctl       0      0      2     11 com.apple.network.statistics
+kctl       0      0      3     11 com.apple.network.statistics
+
+
+
+
+
+
+
+
+
 
 

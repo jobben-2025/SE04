@@ -1,0 +1,323 @@
+9:30am 11am 13pm meetings Maria
+
+Introducing GIT:
+https://www.w3schools.com/git/default.asp
+
+
+Key Git Concepts:
+Repository: A folder where Git tracks your project and its history.
+
+(Init: Creates the repository on the machine it's being run = server!)
+
+Clone: Make a copy of a remote repository on your computer.
+Stage: Tell Git which changes you want to save next.
+Commit: Save a snapshot of your staged changes.
+Branch: Work on different versions or features at the same time.
+Merge: Combine changes from different branches.
+Pull: Get the latest changes from a remote repository.
+Push: Send your changes to a remote repository.
+
+
+What is git? -> https://www.atlassian.com/git/tutorials/what-is-git
+Why use git? -> https://www.atlassian.com/git/tutorials/why-git
+What is an ssh key? -> https://www.atlassian.com/git/tutorials/git-ssh
+Git cheet sheet? -> https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet
+Using branches -> https://www.atlassian.com/git/tutorials/using-branches
+Branches naming conventions -> https://conventional-branch.github.io/
+A part from that, if you feel you can do it, you can try and create an ssh key for github by following the instructions in the next part:
+Generate and ss key and add it to the agent -> https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Adding an ssh key to your github account -> https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+Testing your ssk key connection -> https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
+
+
+fix missing repo:
+git remote rm origin
+git remote -v			shows existing repos (should be empty)
+git remote add origin http:.....
+git branch -M main 		change master branch to main
+git push -u origin main
+
+
+
+development:
+git checkout -b dev
+git branch 				displays you are using dev now
+git branch feature/navbar	creates new branch, without switching to it
+
+BEFORE CHECKOUT from a branch - do COMMIT !!!!
+otherwise the changes move over to the other branch
+
+
+
+
+WORKFLOW:
+add -changes to stage
+commit -m "notes for code" -save changes to history
+push -changes back to GIthub
+
+git add filename/folder
+git add . 		>>adds all files in red (unstaged files)
+
+
+
+git restore filename/folder			will restore old files, trash changes!!!
+
+
+git push -u origin <branch name>    upstream connection to protect main
+git push
+git push origin <branch name>
+
+
+
+git branch >>displays which branch you are in (master) --list
+git branch new-branch-name >>creates a new branch, without checkout
+
+git checkout -b experimental-branch >>creates and switches to new branch
+git add file-that-changed
+git status
+git commit -m "new file"
+git status
+
+git branch >>verify we are in experimental
+
+git checkout master
+git branch >>display you are in master
+
+git merge experimental-branch
+git status >>we are back in master without open branches
+
+git log
+
+
+
+git branch -m changed-branch-name >>changes current branch name
+
+
+
+git branch -d branch-name >>safe deletion of branch (use -D to force)
+
+git branch -a >>list all remote branches
+git push origin --delete experimental-branch >>delete remote repo branch
+
+
+git merge branch-name
+
+
+Branch Naming Prefixes:
+main: 		The main development branch (e.g., main, master, or develop)
+feature/: 	For new features (e.g., feature/add-login-page)
+>> feature/login
+bugfix/: 	For bug fixes (e.g., bugfix/fix-header-bug)
+>> bugfix/navbar
+hotfix/: 	For urgent fixes (e.g., hotfix/security-patch)
+release/: 	For branches preparing a release (e.g., release/v1.2.0)
+chore/: 	For non-code tasks like dependency, docs updates (e.g., chore/update-dependencies)
+
+
+Basic Rules
+
+Use Lowercase Alphanumerics, Hyphens, and Dots: 
+Always use lowercase letters (a-z), numbers (0-9), and hyphens(-) to separate words. Avoid special characters, underscores, or spaces. For release branches, dots (.) may be used in the description to represent version numbers (e.g., release/v1.2.0).
+
+No Consecutive, Leading, or Trailing Hyphens or Dots: Ensure that hyphens and dots do not appear consecutively (e.g., feature/new--login, release/v1.-2.0), nor at the start or end of the description (e.g., feature/-new-login, release/v1.2.0.).
+
+Keep It Clear and Concise: The branch name should be descriptive yet concise, clearly indicating the purpose of the work.
+Include Ticket Numbers: If applicable, include the ticket number from your project management tool to make tracking easier. For example, for a ticket issue-123, the branch name could be feature/issue-123-new-login
+
+
+Clear Communication: The branch name alone provides a clear understanding of its purpose the code change.
+Automation-Friendly: Easily hooks into automation processes (e.g., different workflows for feature, release, etc.).
+Scalability: Works well in large teams where many developers are working on different tasks simultaneously.
+
+
+
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+Your identification has been saved in /Users/ben/.ssh/id_ed25519
+Your public key has been saved in /Users/ben/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:V9DnUL5ubn3Ew0kUa90XO1iRk2B+6plA1h+lstsWb7E job@benjamin-becht.de
+The key's randomart image is:
++--[ED25519 256]--+
+|          .. +o=*|
+|           .*.+*B|
+|           ooB+B=|
+|          o. o*o+|
+|        S ....=+.|
+|         .  o+o*=|
+|            .+=E+|
+|             +..o|
+|             .. .|
++----[SHA256]-----+
+
+
+eval "$(ssh-agent -s)"
+
+
+Hi jobben-2025! You've successfully authenticated, but GitHub does not provide shell access.
+
+
+
+Level 3)
+The changes inside "trial" were reverted because the changes were carried over to "trial2" when switching branches.
+
+Level 5)
+fatal: repository 'trial2' does not exist
+
+===> where is this?
+Go to Github and check again if trial and trial2 can be merge.
+Has the result changed from when you first checked? Why do you think it is and how can you solve it?
+
+
+
+
+
+
+Local GIT Repo:
+
+cd into folder
+git init 		-creates .git file
+code . 			-open VScode inside same folder
+	create index.html file with html:5 boiler plate
+	open terminal in VScode for CLI commands
+
+-open github website, create new repo there (no Readme!),
+then it will display 2 options: 2nd one is to push existing code into this repo:
+"git remote add origin https:.....git
+git branch -M main
+git push -u origin main"
+
+'failed to push some refs to https....git' 	because no commits yet!
+
+git remote -v 		-display to which repo you are connected (fetch+push)
+git status 			-local file is red/untracked
+git add .
+git status 			-files green (added to the stage)
+git commit -m "First commit"
+git status 			-on branch main, working tree clean
+git push -u origin main	-should push file to remote repo successfully
+
+
+always:
+add-commit-push 	before switching branches, ending
+
+
+Always work in DEV branch, only update MAIN for final code!!!
+git checkout -b dev 	-create dev branch and switch into it
+git branch 				-display dev and main
+git push -u origin dev 	-using origin defines original push location
+'we want to protect MAIN branch b/c everyone depends on it'
+
+-Website github-settings-branches-add-branch-ruleset:
+Ruleset name: 'main protection'
+Enforcement: active
+Target branches: add target 'default'
+Branch rules: restrict deletions, block force pushes, require a pull request before merging (code from dev to main branch) >>CREATE
+
+>> 'visible under RULES-RULESETS'
+
+VScode: left top, current folder - bottem left displays current branch
+
+git branch 		-shows we are in dev branch
+git branch feature/header 		-create the branch, without switching
+git branch feature/main
+git branch feature/footer
+git branch 					-displays dev, feature/header..., main
+git checkout feature/header -change to this branch
+'making code changes, create file contents'
+git status
+git restore OR git add xxx, git commit -m "", git push
+
+git log 		-red names are remote (origin/xxx), green local
+
+git log --oneline  		-everything shortened to single lines
+
+git push -u origin feature/header 		-track this branch
+
+checkout feature/main 					-switch to this branch
+git status 								-show untracked files
+git commit -m "Main tag in index.html with H1"
+git push -u origin feature/main 		-setup once, 1st push!!!
+
+git checkout feature/footer
+git add .
+git commit -m "Footer added"
+git push -u origin feature/footer 		-setup once, 1st push!!!
+
+git checkout feature/main 				-added an paragraph
+git add .
+git commit -m "added new paragraph"
+git push 								-no origin needed anymore
+
+
+"Protection rule for DEV branch"
+'Github website:'
+Ruleset name: dev protection
+Enforcement: active
+Target branches: by pattern - "dev" (or "feature/**")
+Branch rules: pull before push
+CREATE
+
+*merge all remote pushes online in github
+github.com/xxxx/folder/pulls
+compare&merge >> never merge to MAIN, change to DEV !!!
+use original title or change to "merge feature/header into dev"
+description: something about the code
+CREATE PULL REQUEST
+
+>> no conflicts in base branch, on the right side choose collaborator for review possible
+
+"Confirm Merge" to finalize
+Delete branch after merging (remote on github!)
+
+git branch -d feature/header 	-delete the local branch folder
+git branch 			-shows dev, feature/footer, feature/main, main
+"code is missing in HEAD"
+git checkout dev
+git pull 			-receive any new code from github
+
+Website: create new pull request
+Choose which branch: feature/main to base:dev
+title+desc.
+shows conflicts! (different commit histories, old code reference)
+
+git log --oneline 	-Merge pull shown as commit
+git checkout feature/main
+git log --oneline 	-different commit history with IDs!!!
+
+'we need to pull latest code to feature branches' !!!
+git config --global pull.rebase false
+git pull origin dev 		-confilct remove non-code lines manually OR click on 'accept current change/incoming change/both changes/compare changes OR click RESOLVE MERGE EDITOR' -auto "git add"
+
+left button 'source control'
+git status 		-all clean
+git push 		-automatically uploads and does pull request
+
+git checkout feature/footer
+git branch -d feature/main
+
+git branch 		-dev, feature/footer, main
+
+website pull request do base:dev
+- detects conflicts
+git checkout dev
+git pull
+git checkout feature/footer
+git pull origin dev
+git push
+- conflicts resolved automatically and can be merged on github
+
+git checkout dev
+git branch -d feature/footer
+git pull 			(from origin dev to local dev)
+
+'take code over from DEV to MAIN'
+Github: pull requests, dev to main, create pull request
+-no conflicts b/c no divergence with any feature/changes commit logs
+"confirm merge"
+
+
+
+
+
