@@ -1,13 +1,210 @@
+acceptance am-ok pm-ok
+
+Python (first 3 months), Javascript and C#:
+
+Programming languages follow different philosophies, or paradigms, which influence how programs are written and structured:
+
+Procedural Programming:
+Focuses on a sequence of instructions. Example: C.
+Object-Oriented Programming (OOP):
+Organizes code into reusable objects with properties and behaviors. Examples: Python, JavaScript, C#.
+Functional Programming:
+Emphasizes immutability and the use of pure functions. Examples: Haskell, Lisp.
+
+
+Key Characteristics of Variables:
+
+Name: Each variable has a unique name, which acts as a label for the data it holds.
+Value: The actual data stored in the variable.
+Type: The kind of data the variable holds (e.g., number, text, true/false).
+
+
+Common Data Types
+
+Data types define what kind of data a variable can hold. While different programming languages may have variations, most share these common types:
+
+1. Integers - whole numbers (e.g., 1, -3, 42)
+counting or indexing.
+Example: Storing the number of items in a cart.
+
+2. Floats (or Floating-Point Numbers) - decimal numbers (e.g., 3.14, -0.001, 2.0)
+measurements, calculations with fractions, or precise values
+Example: Storing a product’s price.
+
+3. Strings - sequences of characters or text (e.g., “hello”, “123”, “Welcome!”)
+names, messages, or any kind of text-based input/output
+Example: Storing a user’s email address.
+
+4. Booleans - truth values: True or False/0 or 1
+decision-making in code, such as checking conditions or toggling states
+Example: Checking if a user is logged in (True or False).
+
+
+Best Practices for Variable Names:
+
+Descriptive and Meaningful:
+Use names that clearly describe the purpose of the variable.
+Example: Use user_age instead of x for storing a user’s age.
+
+No Special Characters:
+Variable names typically consist of letters, numbers, and underscores (_).
+Avoid spaces and special symbols like @, $, or %.
+
+Start with a Letter:
+Most languages require variable names to start with a letter or an underscore, not a number.
+Example: name1 is valid, but 1name is not.
+
+Use Case:
+Use snake_case (e.g., first_name) or camelCase (e.g., firstName) consistently, depending on the convention of the language.
+
+Case-Sensitive:
+Variable names are often case-sensitive. For example, Name and name would be treated as two different variables in many languages.
+
+Avoid Reserved Words:
+Reserved words or keywords (e.g., if, for, while) cannot be used as variable names because they have special meanings in programming.
+
+
+Python is dynamically typed, meaning a variable’s type can change during its lifetime (e.g., a variable holding a number can later hold a string). 
+Others, like C# or Java, are statically typed, requiring you to declare a variable’s type upfront, and it cannot change.
 
 
 
+Benefits of Pseudocode:
+
+Helps clarify your thinking before coding.
+Breaks down the problem into manageable steps.
+Bridges the gap between the problem and the code.
+Makes it easier to debug logic errors early.
+
+
+Components of Pseudocode
+
+When writing pseudocode, you’ll often use constructs that mirror programming concepts. These include:
+
+Variables: To store data or values.
+Conditions: To make decisions (e.g., if-else statements).
+Loops: To repeat actions (e.g., for or while loops).
+Control Flow: The sequence in which actions are executed.
+Functions: To organize reusable logic into modular blocks.
+
+
+Let’s work through a common example: Designing a program to find the largest number in a list.
+We need to:
+
+Take a list of numbers as input.
+Compare the numbers to determine the largest one.
+Output the largest number.
+
+1. Start
+2. Input the list of numbers
+3. Initialize a variable `largest` and set it to the first number in the list
+4. For each number in the list starting from the second:
+    a. If the current number is greater than `largest`:
+        i. Update `largest` to the current number
+5. Output `largest`
+6. End
+
+
+Key Constructs in This Example
+
+Variable Initialization:
+largest is initialized to hold the first number in the list.
+
+Control Flow:
+The program processes the numbers sequentially.
+
+Condition:
+The if statement checks whether the current number is greater than the current largest.
+
+Loop:
+The for loop iterates through the list.
+
+
+From Pseudocode to Code
+
+numbers = [3, 5, 7, 2, 8]  # Example list
+largest = numbers[0]  # Step 3
+for num in numbers[1:]:  # Step 4
+    if num > largest:  # Step 4a
+        largest = num  # Step 4a i
+print("The largest number is:", largest)  # Step 5
+
+
+stop, break down the problem, and think critically about the solution. 
+By focusing on logic and structure rather than syntax, you can design
+clear, effective solutions to programming problems
+
+
+Write Pseudocode for different problems
+You have no real input and output interfaces but you can write
+input or print to denote them.
+
+1. Calculate the Average of a Set of Numbers
+
+You’re tasked with creating a program that calculates the average score for a class. The program should:
+
+Take a list of student scores as input.
+Add up all the scores.
+Divide the total by the number of scores.
+Output the average score.
+
+pseudo code:
+
+input{2,3,1,4,3,2,1}
+	average = sumup(input) divided by count(input)
+print(average)
 
 
 
+2. Determine If a Number Is Prime
+
+Design a program that determines if a given number is a prime number.
+The program should:
+
+Take a single number as input.
+Do you know what’s the criterion for a number to be prime? 👀
+If it is, output “Prime”; otherwise, output “Not Prime.”
+
+#prime can only be divided by 1 and itself, no other divisors allowed
+#7 is a prime, 6 not as it can be divided by 2 and 3
+#2,3,5,7 are prime no.
+
+input(number)
+i = squareroot(number)
+for i in i%
+	result = squareroot(number) : {2,3,5,7}
+end
+if result = not integer then yesnoprime = 1
+print (result & "is a prime")
+else result = integer then yesnoprime = 0
+print(result &"is not a prime")
+end
 
 
 
+3. Simulate a Simple Vending Machine
 
+Create a program to simulate a vending machine. The program should:
+
+Display a list of items with their prices.
+Take user input for item selection and the amount of money inserted.
+Check if the amount is sufficient.
+If it is, dispense the item and calculate the change.
+If not, inform the user that more money is required.
+Handle cases where the item is out of stock.
+
+#price of every item same, is 1 EUR
+items = {item1,item2,item3,item4}
+for item in items:
+print(item)
+if input.item.selected=yes then print(price)
+	wait for inserted.coin ==0
+	if inserted.coin = 1 then output.item
+	else if inserted.coin = <1 then print("put more money in")
+	else if inserted coin = >1 then
+		output.item and output.change (output.change = inserted.coin -1)
+	end
+end
 
 
 
