@@ -123,20 +123,54 @@ if "Java" not in textblob: print("Text string contains no Java")
 # Step 7: Bitwise Operators (Bonus)
 # Perform bitwise operations
 #Perform the following operations with a = 5 and b = 3:
+a=5
+b=3
+print(f"Starting with a={a} and b={b}")
 #Bitwise AND (&)
+new_result = a & b
+print(f"Result of a & b: " + str(new_result))
+
 #Bitwise OR (|)
+new_result = a | b
+print(f"Result of a | b: " + str(new_result))
+
 #Bitwise XOR (^)
+new_result = a ^ b
+print(f"Result of a ^ b: " + str(new_result))
+
 #Bitwise left shift (<<) for a by 1
+new_result = a << b
+print(f"Result of a << b: " + str(new_result))
+
 #Bitwise right shift (>>) for b by 1
-
-
-
+new_result = a >> b
+print(f"Result of a >> b: " + str(new_result))
 
 
 # Step 8: Operator Precedence
 # Write expressions with precedence
 #Write an expression combining +, *, and ** operators. Use parentheses to change the order of operations.
+a = 7
+b = 9
+c = 2
+d = -3
+
+new_result = (a + b)**c-d
+print(f"Started with a={a}, b={b}, c={c}, d={d}")
+print(f"Calculated (a+b)**c-d = " + str(new_result))
+
+
+
+
 #Evaluate the expression with and without parentheses to see how precedence works
+a = 7
+b = 9
+c = 2
+d = -3
+
+new_result = a + b**c-d
+print(f"Started with a={a}, b={b}, c={c}, d={d}")
+print(f"Calculated a+b**c-d = " + str(new_result))
 
 
 
