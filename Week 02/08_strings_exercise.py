@@ -87,9 +87,24 @@ print(example_string)
 
 # Bonus: Use String Methods
 #The bio string centered within 50 characters.
+
+print(bio.center(150,"-"))       #Output displayed looks normal, no reformat (maybe b/c multi-line)
+
+bio = "New single line text for my bio. I am from Germany, study Python currently."
+counted_bio = len(bio)
+print(counted_bio)
+print(bio.center(100,"-"))      #Bio was longer than center-value to fill, increase fill value above!
+
+
 #The count of the letter "a" in your full_name
+searchfor = 'B'
+print(f"how many times is {searchfor} in my full name: " + str(full_name.count(searchfor)))
 
-
+#counted_a = full_name.count('a')
+#print(full_name)
+#counted_chars = full_name.count('B')
+#counted_test = "banana".count('n')
+#print(counted_chars, counted_test)
 
 
 
