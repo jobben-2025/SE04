@@ -1,0 +1,79 @@
+
+
+Declare variables:
+name = "Alice"
+
+
+
+
+Creating Variables and Naming Rules
+
+You can create variables by assigning a value with the = operator. Variable names:
+
+Must start with a letter or an underscore (_).
+Cannot start with a number or contain spaces and special characters.
+Are case-sensitive: name and Name are different variables.
+snake_casing is favoured.
+Many Values to Multiple Variables
+
+Python allows you to assign multiple values to multiple variables in a single line. This is useful when you need to initialize several variables at once.
+
+One Value to Multiple Variables
+
+You can assign the same value to multiple variables. This is convenient when variables need the same starting value.
+
+Casting
+
+Casting lets you specify the type of a variable. For example, you can cast a value to a string, integer, or float.
+
+Getting the Type of a Variable
+
+The type() function allows you to check the type of a variable. This is useful for debugging or understanding your data.
+
+Single vs Double Quotes
+
+Strings in Python can use single quotes (') or double quotes ("). Use:
+
+Double quotes if the string contains a single quote.
+Single quotes if the string contains double quotes.
+Case Sensitivity
+
+Python is case-sensitive, meaning name and Name are treated as different variables.
+
+Printing and Type Checking
+
+You already know you can use the print function to output to the terminal. What you didn’t know is that even though Python is dymamically typed, meaning that types are assumed and evaluated when the script runs, it also enforces some basic type checking for certain operations. For example, you cannot use + to combine a string and a number. To fix this, you need to explicitly convert the number to a string. Uncomment line 33 to see what happens.
+
+Global Variables
+
+For now our code is spread out in a single file without any means of reusability even within the same file, we’ll fix that when we learn about functions: reusable bits of code. 
+
+In the meantime, you only need to undestand that all variables defined outside of functions (pretty much all those within this file) are global variables and can be accessed from anywhere in the code. Whereas variables declared within a function can’t only be accessed within the function itself! They are local to the function.
+
+
+
+
+Instructions
+
+Create variables:
+Create a variable named name and assign your name as a string.
+Create a variable named age and assign your age as a number.
+Create a variable named height and assign your height in meters as a float.
+Print the variables:
+Use the print() function to display each variable’s value.
+Check the type of the variables:
+Print the type of each variable using the type() function.
+Casting:
+Convert the age variable to a string and assign it to a new variable called age_str.
+Print a sentence that combines name and age_str. Example: "My name is Alice and I am 25 years old."
+Global Variable (Bonus):
+Create a variable named global_message outside a function and assign a message.
+Inside a function, use the global keyword to modify the global_message variable.
+Print the modified message after calling the function.
+
+
+
+
+
+
+
