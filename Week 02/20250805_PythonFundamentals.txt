@@ -53,26 +53,366 @@ In the meantime, you only need to undestand that all variables defined outside o
 
 
 
-Instructions
+<<Built-in Data Types in Python>>
 
-Create variables:
-Create a variable named name and assign your name as a string.
-Create a variable named age and assign your age as a number.
-Create a variable named height and assign your height in meters as a float.
-Print the variables:
-Use the print() function to display each variable’s value.
-Check the type of the variables:
-Print the type of each variable using the type() function.
-Casting:
-Convert the age variable to a string and assign it to a new variable called age_str.
-Print a sentence that combines name and age_str. Example: "My name is Alice and I am 25 years old."
-Global Variable (Bonus):
-Create a variable named global_message outside a function and assign a message.
-Inside a function, use the global keyword to modify the global_message variable.
-Print the modified message after calling the function.
+Python has the following built-in data types:
+
+Text Type:
+str (String): Represents text enclosed in quotes.
+Numeric Types:
+int (Integer): Whole numbers, e.g., 10.
+float (Floating-point): Decimal numbers, e.g., 3.14.
+complex (Complex numbers): Numbers with a real and imaginary part, e.g., 2 + 3j.
+Sequence Types:
+list: Ordered, mutable collection, e.g., [1, 2, 3].
+tuple: Ordered, immutable collection, e.g., (1, 2, 3).
+range: Generates a sequence of numbers, e.g., range(5).
+Mapping Type:
+dict (Dictionary): Key-value pairs, e.g., {"name": "Alice", "age": 25}.
+Set Types:
+set: Unordered, unique values, e.g., {1, 2, 3}.
+frozenset: Immutable version of a set.
+Boolean Type:
+bool: Represents True or False.
+Binary Types:
+bytes: Immutable sequence of bytes.
+bytearray: Mutable sequence of bytes.
+memoryview: Memory view of a byte object.
+None Type:
+NoneType: Represents the absence of a value (None).
+Implicit vs Explicit Typing
+
+Implicit Typing: Python assigns the data type automatically based on the value.
+Explicit Typing (Casting): You can convert one type to another using casting functions like str(), int(), or float().
+When to Use Explicit Typing
+
+Implicit Typing: Python assigns the type automatically:
+1
+2
+3
+x = 10 # int 
+y = "Hello" # 
+str z = 3.14 # float
+Explicit Typing: You specify the type using casting functions like int(), float(), or str():
+1
+2
+3
+x = str(10) # Cast to string 
+y = float(5) # Cast to float 
+z = int(3.14) # Cast to integer
+Explicit typing is useful when:
+
+You need to convert types for operations or printing.
+You’re handling user input, which is often treated as a string.
+You want to ensure consistency across your code.
 
 
 
+<<Numbers>>
+
+Integers (int)
+
+Integers are whole numbers, both positive and negative, with no decimal point. They are commonly used for counting, indexing, or other exact value representations.
+Example: -10, 0, 25, 1000
+
+Floating-Point Numbers (float)
+
+Floats are numbers that include a decimal point. They are used when precision is important, such as in scientific calculations or measurements.
+Example: 3.14, -0.5, 10.0
+
+Complex Numbers (complex)
+
+Complex numbers include a real part and an imaginary part, represented as a + bj where j is the square root of -1. They are used in advanced mathematical and engineering calculations.
+Example: 2 + 3j, -1 + 4j
+
+Python provides built-in support for all these types, and it automatically detects the appropriate type when you assign a value.
+
+The random Module in Python
+
+The random module in Python is used to generate random numbers and perform random operations. It’s useful in various scenarios such as simulations, games, testing, and data sampling.
+
+The module provides methods to generate random integers, floats, and sequences (like lists or strings), as well as methods to shuffle data or pick random elements.
+
+
+
+<<Strings>>
+
+Single and Double Quotes
+
+Strings can be written using single quotes (') or double quotes ("):
+
+Use single quotes if the string contains double quotes.
+Use double quotes if the string contains single quotes.
+Multi-Line Strings
+
+For strings spanning multiple lines, use triple quotes (""" or '''):
+
+Example:
+
+1
+2
+3
+multiline = """This is a 
+multi-line 
+string."""
+Strings are Arrays
+
+Strings are array, a linear data structure where all elements are arranged sequentially, so you can access individual characters using indexing:
+
+Index starts at 0.
+Use negative indexes to start from the end (-1 for the last character).
+Looping Through a String
+
+You can use a for loop to iterate through the characters of a string.
+
+String Length
+
+Use the len() function to find the length of a string.
+
+Check if a String Exists in a Phrase
+
+You can use the in keyword to check if a substring exists, and not in to check if it doesn’t.
+
+String Slicing
+
+Slicing allows you to extract parts of a string using a range of indexes:
+
+string[start:end] – Includes start but excludes end.
+string[:end] – From the beginning to end.
+string[start:] – From start to the end.
+Modifying Strings
+
+Strings in Python are immutable—methods return new strings without modifying the original. Useful methods include:
+
+upper() and lower() – Convert to uppercase or lowercase.
+strip() – Removes whitespace from the beginning and end.
+replace() – Replaces parts of a string.
+split() – Splits a string into a list based on a separator.
+String Concatenation
+
+Combine strings using the + operator or the join() method:
+
+1
+2
+name = "Alice"
+greeting = "Hello " + name
+String Formatting
+
+Since concatenation can be limiting and remembering strings cannot be combined with numbers directly we can format for more complex use cases.
+
+Python provides two main ways to format strings:
+
+format function:
+
+Using placeholders denoted with curly braces. Placeholder can be named, numbered or empty:
+
+1
+2
+3
+print("I am {name} and I'm {age} years old.".format(name = "Jorge", age = 34))
+print("I am {name} and I'm {age} years old.".format(name = "Jorge", age = 34))
+print("I am {} and I'm {} years old.".format("Jorge", 34))
+f-strings:
+
+A Python3 addition, they are more readable and considered the way to go. They allow for passing named placeholders.
+
+1
+2
+3
+4
+5
+age = 34
+ 
+name = "Jorge"
+ 
+print(f"I am {name} and I'm {age} years old.")
+Escaping Characters
+
+Some characters have special meaning within the context of Python, use a backslash (\) to escape special characters:
+
+1
+text = "He said \"Hello\""
+String Methods
+
+Python provides many built-in methods to work with strings. For more information, check the official documentation
+
+Method	Description
+capitalize()	Converts the first character to uppercase.
+casefold()	Converts string into lowercase.
+center()	Returns a centered string.
+count()	Returns the number of occurrences.
+endswith()	Checks if a string ends with a value.
+find()	Finds the first occurrence of a value.
+format()	Formats values in a string.
+isalnum()	Checks if all characters are alphanumeric.
+isalpha()	Checks if all characters are letters.
+isdigit()	Checks if all characters are digits.
+islower()	Checks if all characters are lowercase.
+isspace()	Checks if all characters are whitespace.
+join()	Joins elements of an iterable into a string.
+replace()	Replaces a value with another.
+split()	Splits the string into a list.
+strip()	Trims whitespace from the start and end.
+upper()	Converts a string to uppercase.
+Note: These methods return new strings and do not modify the original string.
+
+
+
+<<Booleans>>
+
+When Do Values Evaluate to True?
+
+In Python, almost any value is evaluated to True if it has some sort of content. Here are some examples:
+
+The Boolean value True itself.
+Strings: Any non-empty string evaluates to True.
+Numbers: Any non-zero number (positive or negative) evaluates to True.
+Collections: Any non-empty list, tuple, set, or dictionary evaluates to True.
+When Do Values Evaluate to False?
+
+There are a few specific values that evaluate to False in Python:
+
+The Boolean value False itself.
+Empty values:
+"" (empty string)
+[] (empty list)
+() (empty tuple)
+{} (empty dictionary)
+set() (empty set)
+The number 0:
+0 (integer)
+0.0 (float)
+0j (complex zero)
+The special value None.
+Truthy and Falsy Values
+
+Python implicitly converts values to True or False when needed, a behavior referred to as truthy and falsy evaluation. Understanding truthy and falsy values is key when writing conditional statements (covered later).
+
+Booleans and control structures
+
+Boolean values are mostly used for controlling the flow of our program by means of using control structures:
+
+Conditionals: Deciding the flow based on the evaluation of a condition in boolean terms, e.g. the famous if/else statement. You can see two examples of this starting line 23. We will learn more about them soon!
+Loops: Sequentially evaluating an expression on data in a sequence, e.g. going over a list.
+
+
+<<Operators>>
+
+
+What is an Expression?
+
+An expression is a combination of values, variables, and operators that Python evaluates to produce a result. For example:
+
+x = 5 + 3 # Expression: 5 + 3 evaluates to 8
+
+Python supports a variety of operators for performing operations on data.
+
+Types of Operators
+
+1. Arithmetic Operators
+
+Arithmetic operators are used for mathematical calculations:
+
+Operator	Description	Example
++	Addition	5 + 3 = 8
+-	Subtraction	5 - 3 = 2
+*	Multiplication	5 * 3 = 15
+/	Division	5 / 3 = 1.67
+//	Floor Division	5 // 3 = 1
+%	Modulus (Remainder)	5 % 3 = 2
+**	Exponentiation	5 ** 3 = 125
+2. Assignment Operators
+
+Assignment operators are used to assign values to variables:
+
+Operator	Description	Example
+=	Assign	x = 5
++=	Add and assign	x += 3 (x = x + 3)
+-=	Subtract and assign	x -= 3 (x = x – 3)
+*=	Multiply and assign	x *= 3
+/=	Divide and assign	x /= 3
+//=	Floor divide and assign	x //= 3
+%=	Modulus and assign	x %= 3
+**=	Exponentiate and assign	x **= 3
+3. Comparison Operators
+
+Comparison operators compare two values and return a Boolean result (True or False):
+
+Operator	Description	Example
+==	Equal	5 == 3 → False
+!=	Not equal	5 != 3 → True
+>	Greater than	5 > 3 → True
+<	Less than	5 < 3 → False
+>=	Greater or equal	5 >= 3 → True
+<=	Less or equal	5 <= 3 → False
+4. Logical Operators
+
+Logical operators combine conditional statements:
+
+Operator	Description	Example
+and	Logical AND	True and False → False
+or	Logical OR	True or False → True
+not	Logical NOT	not True → False
+5. Identity Operators
+
+Identity operators check if two objects refer to the same memory location:
+
+Operator	Description	Example
+is	Same identity	x is y
+is not	Different identity	x is not y
+6. Membership Operators
+
+Membership operators check if a value is present in a sequence:
+
+Operator	Description	Example
+in	Exists	"a" in "apple" → True
+not in	Does not exist	"z" not in "apple" → True
+7. Bitwise Operators
+
+Bitwise operators perform operations on binary number. These operators are vital for performing mathematical operations at bit level inside the processor’s arithmetic logic unit but less common in higher-level tasks.
+
+Operator	Description	Example
+&	AND	5 & 3 = 1
+|	OR	5 | 3 = 7
+^	XOR	5 ^ 3 = 6
+~	NOT	~5 = -6
+<<	Left shift	5 << 1 = 10
+>>	Right shift	5 >> 1 = 2
+Operator Precedence
+
+Operator precedence determines the order in which operators are evaluated in an expression:
+
+Operator	Description
+()	Parentheses
+**	Exponentiation
++x, -x, ~x	Unary plus, minus, and bitwise NOT
+* / // %	Multiplication, division, floor division, modulus
++ -	Addition, subtraction
+<< >>	Bitwise left and right shifts
+&	Bitwise AND
+^	Bitwise XOR
+|	Bitwise OR
+==, !=, <, <=, >, >=, is, is not, in, not in	Comparisons, identity, and membership operators
+not	Logical NOT
+and	Logical AND
+or	Logical OR
+
+
+
+random.randint(1,10) - random integer between 1 and 10
+random.random() - random float between 0 and 1, 0.4
+random.uniform(1,5) - random float between 2 numbers you pass
+
+print() - display output to screen
+len() - returns length of collection
+type() - outputs type of an object
+int(),str(),float() converts values between types
+input - user input as string: name = input("your name: ")
+
+
+each element in a string has an index (0,1,2,3,4....)
+each element in squence can be looped
+count sequence/string using len() function
 
 
 

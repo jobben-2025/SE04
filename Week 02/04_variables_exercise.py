@@ -26,6 +26,11 @@ print("My name is " + name + " and I am " + age_str)
 #print("My name is " & name & " and I am " & age & " years old.")
 #print(name, age)
 
+#2nd way:
+print(f"I am {name} and I am {age} years old." )
+
+
+
 # Bonus: Global Variable (Bonus)
 #Create a variable named global_message outside a function and assign a message.
 #Inside a function, use the global keyword to modify the global_message variable.
