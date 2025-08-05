@@ -22,7 +22,7 @@ result = a%b
 print("modulus: " + str(result))
 
 result = a**b
-print("exponentation: " + str(result))
+print("exponentiation: " + str(result))
 
 
 # Step 2: Assignment Operators
