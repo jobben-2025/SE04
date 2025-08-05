@@ -48,23 +48,40 @@ else: print("No Java in the bio found")
 #Split bio into a list of words and print the result.
 
 
+print(f"firstname is {first_name.upper()} and lastname {last_name.lower()}")
+
+#remove extra spaces:
+bio.strip
+
+print(bio.replace("Python", "coding"))      #replace words in string, only affects current output
+print(bio)                                  #still old output, to change do: bio = bio.replace("1", "2")
+
 
 # Step 7: Concatenate Strings
 #Combine first_name and last_name into a single string full_name with a space in between.
 #Print the full name
-
+full_name = first_name + " " + last_name
+print(f"Single string full name: {full_name}")
 
 # Step 8: String Formatting
 #Use an f-string to print:
 #"Hello, my name is {full_name} and I love Python!"
+print(f"Hello, my name is {full_name} and I love Python!")
+
 #Use the format() method to print:
 #"My full name is {} and I am {} years old." where {} are placeholders for full_name and your age
+age = 41
+print("My full name is {} and I am {} years old.".format(full_name, age))
 
 
 
 # Step 9: Escape Characters
 #Create a string that includes a double quote and a single quote. Example:
 #He said, "Python's great!"
+
+example_string = '"' + "'He said, Python's great!'"  + '"'
+#example_string2 = '"' + example_string + '"' #just used to find solution above
+print(example_string)
 
 
 
