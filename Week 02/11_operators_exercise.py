@@ -18,6 +18,10 @@ print("multiplication: " + str(result))
 result = a/b
 print("division: " + str(result))
 
+result = a//b
+print("floor division: " + str(result))
+
+
 result = a%b
 print("modulus: " + str(result))
 
@@ -31,16 +35,16 @@ x = 10
 
 # Modify x using assignment operators
 #Use the +=, -=, *=, and /= operators to modify the value of x. Print the result after each operation
-x += 4          #x = x+4
+x += 5          #x = x+4
 print("changed to +=: " + str(x))
 
-x -= 6          #x = x-6
+x -= 3          #x = x-6
 print("changed to -=: " + str(x))
 
 x *= 2          #x = x*3
 print("changed to *=: " + str(x))
 
-x /= 3          #x = x/3
+x /= 4          #x = x/3
 print("changed to /=: " + str(x))
 
 
@@ -68,6 +72,7 @@ print(f"Is a>=b : {result}")
 
 result = a<=b
 print(f"Is a<=b : {result}")
+#print("is a<=b:", a<=b)        #teacher solution, much shorter, more efficient
 
 
 # Step 4: Logical Operators
@@ -99,6 +104,7 @@ list2 = list1
 #Check if list1 is list2 and if list1 is not list2.
 check_list = (list1==list2)
 print(f"List1==list2: {check_list}")        
+print(f"List1==list2:", list1 is list2)        #alternative from teacher
 
 check_list = (list1!=list2)
 print(f"List1!=list2: {check_list}")
