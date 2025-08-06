@@ -85,23 +85,41 @@ print("List B, unmodified:     " + str(listB))
 
 # Step 9: Concatenate and Extend
 #Using the + operator (e.g., list_a + list_b).
+print("Content of listA before concatenation: " + str(listA))
+listA = listA + listB
+print("New listA+listB together in listA: " + str(listA))
 
 #Using extend() (e.g., list_a.extend(list_b)).
+print("Content of listA before using extend with another listA: " + str(listA))
+listA.extend(listA)
+print("Content of listA: " + str(listA))
 
 
 # Step 10: Sort and Reverse
 #Sort the list using sort().
+print("Sorted listA: " + str(sorted(listA)))
 #Reverse the sorted list using reverse().
+print("Sorted listA: " + str(sorted(listA, reverse=True)))
+
 #(Optional) Use sorted() to create a new sorted list without modifying the original
+newlist = sorted(listA)
+print("Created newlist with sorted listA: " + str(newlist))
 
 # Count and Index
 #Use count() to find how many times a particular value appears in the list.
+result = newlist.count(5)
+print("Counted 5's in the list are: " + str(result))
 #Use index() to find the position of a specific value in the list.
-
+#newlist.index(8)
+print("Index position of searched value no.8: " + str(newlist.index(8)))
 
 # List comprehension
 #Create a new list that transforms or filters your existing list (for example, convert strings to uppercase if they meet a certain condition).
 #Use the syntax [expression for item in my_list if condition].
+
+
+
+
 
 
 
