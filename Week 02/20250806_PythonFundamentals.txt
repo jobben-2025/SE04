@@ -1,0 +1,112 @@
+9am-ok	
+
+Collections of data - lists and tuples
+
+- Lists
+- Tuples
+- Sets
+- Dictionaries
+
+When to Use Which Collection?
+
+Lists:
+Use case: When you need an ordered, flexible collection to add, remove, or modify items.
+Example: Storing a list of tasks where the order matters, and you frequently update the tasks.
+
+Tuples:
+Use case: When you want an ordered collection that should never change once created (immutability is guaranteed).
+Example: Storing geographic coordinates or days of the week.
+
+Sets:
+Use case: When you care about unique items and quick membership checks, not about the order.
+Example: Keeping track of unique user IDs or filtering out duplicates from a collection.
+
+Dictionaries:
+Use case: When you have labeled data that you want to look up by a key, potentially in an ordered way (depending on Python version).
+Example: Keeping user information where each key is a user ID and each value is the user’s profile data.
+
+
+Lists are a core feature of Python that allow you to store multiple items in a single variable. 
+
+Lists are both ordered, changeable and allow duplicate values making them incredibly versatile for all sorts of data manipulation tasks.
+
+List are zero-indexed, the first item has an index [0], the second has index [1], etc.
+
+A list is created using square brackets ([]), and you can add, remove, or modify items at will.
+
+Whether you’re organizing a list of tasks, collecting user inputs, or storing search results, lists are often the go-to solution for dynamic sequences in Python.
+
+Ordered
+
+It means the items have a defined order and that order will not change.
+
+Changeable
+
+We can change, add and remove items.
+
+Allow duplicates
+
+Since they rely on index values, a list can hold duplicate entries. 
+
+Accessing Elements
+
+Index: Lists are zero-indexed, which means the first element is at index 0.
+Negative Index: You can also use negative numbers to count backward from the end of the list. For example, -1 is the last item.
+Range of Indexes (Slicing): You can specify a start and end index to get a subset of the list. Slicing can also omit the start or end to retrieve everything from the beginning or up to the end.
+Example:
+
+my_list[0] gives the first item.
+my_list[-1] gives the last item.
+my_list[1:3] gives items from index 1 (inclusive) to 3 (exclusive).
+my_list[:2] gives items from the beginning up to (but not including) index 2.
+my_list[2:] gives items from index 2 to the end.
+Check if Item Exists
+
+Use the in keyword to determine whether a specific element is present in the list.
+
+Changing Items
+
+By index: Assign a new value to a single index.
+By range of values: Replace multiple items at once by assigning a list of new values to a slice.
+Adding Elements
+
+insert(index, value): Insert an item at a specific position.
+append(value): Add an item to the end of the list.
+extend(iterable): Append another iterable (like another list) to the end.
+Removing Elements
+
+remove(value): Remove the first occurrence of a value.
+pop([index]): Remove the item at the specified index (or the last item if no index is provided).
+del keyword: Use del list[index] to delete an item by index. You can also delete the entire list with del list.
+clear(): Remove all elements, leaving an empty list.
+
+
+List comprehensions in Python provide a concise way to create new lists by transforming or filtering data from an existing iterable (like another list, a range, or any object you can iterate over). They replace the need for writing a for loop and appending items to a list manually, resulting in more readable and compact code.
+
+Basic Syntax:
+
+1
+new_list = [expression for item in iterable if condition]
+expression: The operation or value you want to include in the new list (often involves item).
+for item in iterable: Iterates over each element in the given iterable (e.g., list or range).
+if condition (optional): A filter that includes only items meeting a certain criterion.
+
+Common Applications:
+
+Data Transformation: Quickly transform each element of a list (e.g., convert to uppercase, square each number, etc.).
+Filtering: Include elements only if they meet a specific condition.
+
+Nested Loops: Create combinations of two or more lists.
+Performance: List comprehensions are often faster than writing a traditional loop because they are optimized at the C level in Python.
+
+
+
+
+
+
+
+
+
+
+
+
