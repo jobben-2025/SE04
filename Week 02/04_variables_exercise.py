@@ -9,7 +9,11 @@ height = float(188.3)
 
 # Step 2: Print the variables:
 #Use the print() function to display each variable’s value
-print(name, age, height)
+
+#print(name, age, height)
+print("name:", name)
+print("age:", age)
+print("height:", height)
 print()
 
 # Step 3: Check the type of the variables:
@@ -40,7 +44,7 @@ global_message = "This is a global message"
 print(global_message)
 
 def test_function():
-    global global_message
+    global global_message       #"global" keyword needed to reference the global variable inside a function !!! 
     global_message = "That should be the new global message"
 
 test_function()
