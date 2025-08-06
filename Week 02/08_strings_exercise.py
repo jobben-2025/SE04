@@ -1,10 +1,10 @@
 # Step 1: Create Strings
 #Create two strings: first_name and last_name with your first and last name.
 #Create a multi-line string called bio describing yourself in two sentences.
-first_name = str("Ben")
-last_name = str("Becht")
+first_name = str("John")
+last_name = str("Doe")
 
-bio = str("""My name is Ben, I do
+bio = str("""My name is John, I do
           live in Germany and my newest interest
           lies within studying programming Python""")
 

@@ -3,7 +3,7 @@
 #Create a variable named age and assign your age as a number.
 #Create a variable named height and assign your height in meters as a float.
 
-name = str("Ben")
+name = str("John")
 age = int(41)
 height = float(188.3)
 
