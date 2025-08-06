@@ -115,7 +115,12 @@ print("Index position of searched value no.8: " + str(newlist.index(8)))
 
 # List comprehension
 #Create a new list that transforms or filters your existing list (for example, convert strings to uppercase if they meet a certain condition).
+listA = list(dict.fromkeys(sorted(listA)))
+print("Filtered doubles and sorted list: " +str(listA))
+
 #Use the syntax [expression for item in my_list if condition].
+squares = [num ** 2 for num in listA]
+print("Values in list squared:           " + str(squares))
 
 
 
