@@ -10,12 +10,17 @@ name = name.title()
 print(name)
 
 #2. Extract the first and last name separately
-
-
-#print(name[:5] +" "+ name[6:])
+namelist = name.rsplit(" ")         #Splits the string at the specified separator, and returns a list
+print(namelist[0])                  #from https://www.w3schools.com/python/python_strings_methods.asp
+print(namelist[1])
 
 
 #3. Count how many letters are in the name (excluding spaces)
+#firstname_count = namelist[0].count()
+#for c in namelist:
+     
+#surname_count = namelist[1].count()
+#print(str(firstname_count + surname_count))
 
 
 #4. Count how many letters are in the welcome message

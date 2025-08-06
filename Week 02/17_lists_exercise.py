@@ -9,6 +9,11 @@ print("Second element: " + str(listA[1]))
 print("Third element: " + str(listA[2]))
 print("Fourth element: " + str(listA[3]))
 print("Fifth element: " + str(listA[4]))
+
+#Alternative shortform without text, print each list item separately:
+for x in listA:
+    print(x)
+
 print("")
 
 
