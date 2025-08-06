@@ -83,7 +83,12 @@ print("My full name is {} and I am {} years old.".format(full_name, age))
 
 example_string = '"' + "'He said, Python's great!'"  + '"'
 #example_string2 = '"' + example_string + '"' #just used to find solution above
-print(example_string)
+print("First variant:", example_string)
+
+
+#escape character before quotes to prevent them breaking:
+example_string = '\"\'He said, Python\'s great!\'\"'
+print("2nd variant:", example_string)
 
 
 
@@ -99,8 +104,12 @@ print(bio.center(100,"-"))      #Bio was longer than center-value to fill, incre
 
 
 #The count of the letter "a" in your full_name
-searchfor = 'B'
+searchfor = 'J'
 print(f"how many times is {searchfor} in my full name: " + str(full_name.count(searchfor)))
+
+#teacher variant:
+print(full_name.lower().count("j"))     #lowercase the name fully, because of uppercase/lowercase per character
+
 
 #counted_a = full_name.count('a')
 #print(full_name)
