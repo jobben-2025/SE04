@@ -16,6 +16,8 @@ print(bio)
 
 print("first name: " + first_name[:-2])
 print("last name: " + last_name[4:])
+#print((first_name[0]) + " " + (last_name[-1]))  
+#print(bio[:10])
 print("bio: " + bio[:10])
 
 
