@@ -35,7 +35,7 @@ list1 = list2.copy()	#creates a hollow copy of list2
 list1 = list2[:]		#creates a full copy of list2
 
 
-
+Methods:	adding, removing, sorting, copying	#update the original list
 
 
 
