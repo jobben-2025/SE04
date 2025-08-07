@@ -1,0 +1,57 @@
+9am-ok
+
+Like lists, tuples are an ordered collection of elements, but unlike lists, they are unchangeable (or “immutable”). This means that once you create a tuple, you cannot add, remove, or modify its elements. Tuples are especially useful when you want to ensure that a sequence of values cannot be altered throughout the program.
+
+Tuples are written with round brackets ()
+Additionally, you can check if an item exists in a tuple using the in keyword.
+
+Python offers a built-in function list to convert an iterable into a list and a tuple function to convert an iterable into a tuple. This approach should only be used for explicit conversion, e.g. from a tuple to a list but not as means of modyfing a tuple
+
+
+When you create a tuple by listing its items, you’re packing values into that tuple. For example:
+
+1
+fruits = ("apple", "banana", "cherry")
+Here, "apple", "banana", and "cherry" are packed into the tuple fruits.
+
+To unpack a tuple, you assign its items to a sequence of variables. If the number of variables matches the number of items in the tuple, Python will assign them one by one:
+
+1
+(my_fruit1, my_fruit2, my_fruit3) = fruits
+Sometimes, you don’t know exactly how many items you’ll want in separate variables. That’s where the asterisk (*) syntax can help. When you place an asterisk before a variable name, Python collects the remaining items into a list and assigns it to that variable.
+
+The asterisk is typically used on the last variable, but you can use it on another position. Python will then assign values to the “asterisk variable” until the leftover count of items matches the number of remaining variables.
+
+One variable can collect multiple items into a list using *.
+If the asterisk is placed on a variable that is not the last, Python will assign items to that variable until the number of items left matches the remaining variables.
+
+
+
+tuples are immutable, but you can still combine or “join” them into a new tuple. Two common ways to do this are:
+
+Concatenation (+)
+You can use the + operator to join two or more tuples into one. This operation creates a new tuple containing elements from each original tuple in order.
+Multiplication (*)
+You can use the * operator to repeat a tuple multiple times, creating a new tuple that contains repeated sequences of the original tuple’s items.
+These operations do not modify the original tuples; instead, they produce new tuple objects
+
+
+Tuples: methods
+
+Two particularly useful methods are:
+
+count(value)
+Returns how many times a specified value appears in the tuple.
+index(value)
+Searches the tuple for a specified value and returns the index of the first occurrence of that value.
+If the value is not found, Python raises a ValueError.
+Since tuples are ordered and immutable, methods like count() and index() are especially helpful for querying their contents without modifying them.
+
+
+
+
+
+
+
+
+
