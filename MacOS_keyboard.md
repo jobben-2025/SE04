@@ -1,8 +1,8 @@
 
+collections in python:
+curly brackets {}: option-key + 8/9         
 
-curly brackets {}: option-key + 8/9
-squared brackets []: option-key +5/6
-
+squared brackets []: option-key +5/6        
 
 
 pipe symbol |: option-key + 7
