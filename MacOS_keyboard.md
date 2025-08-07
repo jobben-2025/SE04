@@ -9,3 +9,5 @@ pipe symbol |: option-key + 7
 
 backslash \: option-key + shift + 7
 
+tilde ~: option-key + n
+
