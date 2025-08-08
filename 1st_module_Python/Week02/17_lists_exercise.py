@@ -147,13 +147,20 @@ print(shopping_list)
 
 
 
-sorted_listA = sorted(listA)
-print(sorted_listA)
+#sorted_listA = sorted(listA)
+#print(sorted_listA)
 
-reversed_a = list(reversed(listA))
-print("reversed a:", reversed_a)
-print("a: ", listA)
-
-
+#reversed_a = list(reversed(listA))
+#print("reversed a:", reversed_a)
+#print("a: ", listA)
 
 
+#groceries_2 = shopping_list.copy()
+groceries_2 = [item.upper() for item in shopping_list]          #shortform creation of list in uppercase!!!
+groceries_2 = [item.upper() for item in shopping_list if "s" in item]          #shortform creation of list in uppercase!!!
+
+#same in longform:
+for item in shopping_list:
+    groceries_2.append(item.upper())
+
+print(groceries_2)
