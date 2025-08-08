@@ -113,13 +113,14 @@ small_set = {3, 4, 5}
 large_set = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 #Use issubset() to verify that small_set is a subset of large_set and print the result.
-
+print("The small_set is a subset of the large_set: ", small_set.issubset(large_set))
 
 #Use issuperset() to verify that large_set is a superset of small_set and print the result.
-
+print("The small_set is a superset of the large_set: ", small_set.issuperset(large_set))
+#print("The large_set is a superset of the small_set: ", large_set.issuperset(small_set))
 
 #Check if two sets are disjoint using isdisjoint() and print the result
-
+print("The small_set is a disjoint of the large_set: ", small_set.isdisjoint(large_set))
 
 
 
