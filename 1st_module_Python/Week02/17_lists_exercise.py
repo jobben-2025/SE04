@@ -133,3 +133,27 @@ print("Values in list squared:           " + str(squares))
 
 
 
+#Extras:
+
+list = ["a", "b", "c"]
+list.pop(0)
+print(list)
+
+shopping_list = ["apple", "pear"]
+for item in shopping_list:
+    if item == "sugar":
+        shopping_list.remove("sugar")
+print(shopping_list)
+
+
+
+sorted_listA = sorted(listA)
+print(sorted_listA)
+
+reversed_a = list(reversed(listA))
+print("reversed a:", reversed_a)
+print("a: ", listA)
+
+
+
+
