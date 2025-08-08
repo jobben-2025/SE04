@@ -39,7 +39,8 @@ Methods:	adding, removing, sorting, copying	#update the original list
 
 
 
-
+sort >> updates original list
+sorted >> updates list in memory, does not change org. list
 
 
 

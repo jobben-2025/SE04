@@ -1,0 +1,120 @@
+
+
+
+A set in Python is a collection type that stores unordered, unindexed, and unique items. Here’s what each concept means for sets:
+
+Unordered:
+Sets do not maintain any particular order for their elements. The items may appear in different orders each time you access the set, and you cannot rely on their position.
+Unchangeable Items:
+While the set itself is mutable (you can add or remove items), the items within a set must be immutable (unchangeable). This means you cannot have mutable data types like lists or dictionaries as elements of a set, but you can have strings, numbers, or tuples.
+Unindexed:
+Since sets are unordered, they do not support indexing or slicing. You can’t access an item by its position because there is no fixed order
+
+
+
+Accessing Items in a Set
+
+Direct Indexing:
+Sets do not support indexing or slicing because they are unordered. You cannot do something like
+1
+my_set[0]
+Membership Testing:
+You can check if an item exists in a set using the in keyword. This operation is very fast due to the underlying optimisation of sets.
+1
+2
+if "apple" in my_set: 
+    print("Apple is in the set!")
+Adding Items to a Set
+
+add(item):
+Adds a single new item to the set. If the item already exists, the set remains unchanged since sets only store unique values.
+1
+my_set.add("date")
+update(iterable):
+Adds multiple items from an iterable (like another set, list, or tuple) to the set.
+1
+2
+another_fruits = {"fig", "grape"} 
+my_set.update(another_fruits) 
+This will add all elements from another_fruits to my_set.
+
+Removing Items from a Set
+
+remove(item):
+Removes a specific item from the set. If the item is not found, this method raises a KeyError.
+1
+my_set.remove("banana")
+discard(item):
+Also removes a specific item, but if the item is not present, it does not raise an error.
+1
+my_set.discard("kiwi")
+pop():
+Removes and returns an arbitrary element from the set. Because sets are unordered, you don’t know which element will be removed. If the set is empty, it raises a KeyError.
+1
+2
+removed_item = my_set.pop() 
+print("Removed item:", removed_item)
+clear():
+Removes all elements from the set, leaving it empty.
+1
+my_set.clear()
+
+
+Python provides several methods to perform mathematical set operations. These include union, intersection, difference, and symmetric difference. Each operation serves different purposes, such as combining datasets, finding commonalities, or identifying unique elements between sets.
+
+Set Operations Table
+
+Operation	Methods	Description	Use Cases
+Union	union(), update()	Combines elements from two or more sets, removing duplicates.	Merging datasets, aggregating features.
+Intersection	intersection()	Returns elements common to two or more sets.	Finding common elements, similarities in data.
+Difference	difference()	Returns elements in one set but not in another.	Filtering out unwanted items, subtracting groups.
+Symmetric Difference	symmetric_difference()	Returns elements in either set but not in both (excludes common items).	Finding unique items between datasets, differences.
+Union combines all elements from the involved sets.
+unionreturns a new set.
+update() modifies an existing set by adding elements from another set.
+Intersection finds common elements between sets.
+Difference identifies elements present in one set but not in another.
+Symmetric Difference yields elements that are in either set but not in both, effectively highlighting differences.
+
+
+
+
+The table below provides a quick reference to various set methods, their shorthand operators (where applicable), and a brief description of what each method does. These methods allow you to manipulate and query sets efficiently.
+
+Method	Shortcut	Description
+add()		Adds an element to the set.
+clear()		Removes all the elements from the set.
+copy()		Returns a shallow copy of the set.
+difference()	-	Returns a new set containing the difference between this set and others.
+difference_update()	-=	Removes items from this set that are also in another set.
+discard()		Removes the specified item from the set if it exists.
+intersection()	&	Returns a new set that is the intersection of this set and other sets.
+intersection_update()	&=	Updates this set by keeping only items that are present in all specified sets.
+isdisjoint()		Returns True if two sets have no elements in common.
+issubset()	<=	Returns True if every element of this set is in another set.
+< (proper subset)	<	Returns True if this set is a proper subset of another set.
+issuperset()	>=	Returns True if this set contains all elements of another set.
+> (proper superset)	>	Returns True if this set is a proper superset of another set.
+pop()		Removes and returns an arbitrary element from the set. Raises KeyError if empty.
+remove()		Removes a specified element from the set. Raises KeyError if the element is not found.
+symmetric_difference()	^	Returns a new set with elements in either set but not in both.
+symmetric_difference_update()	^=	Updates this set with the symmetric differences of itself and another set.
+union()	|	Return a set containing the union of sets
+update()	|=	Update the set with the union of this set and others
+Use Cases:
+
+add(), discard(), remove(): Modify set elements.
+clear(), copy(): Manage set lifecycle and create backups.
+difference(), intersection(), union(), symmetric_difference(): Perform mathematical set operations to compare or combine data sets.
+difference_update(), intersection_update(), symmetric_difference_update(), update(): Modify the current set based on operations with other sets.
+isdisjoint(), issubset(), issuperset(): Test relationships between sets.
+pop(): Retrieve and remove an element when order doesn’t matter.
+
+
+
+
+
+
+
+
+
