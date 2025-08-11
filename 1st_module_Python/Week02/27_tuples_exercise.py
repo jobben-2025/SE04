@@ -31,6 +31,9 @@ if "apple" in my_tuple: check_var = 1                               #2nd solutio
 
 #Print a message indicating whether the item is found
 if check_var == 1: print("Found apple!")
+#print(2 in my_tuple)
+#if 2 in my_tuple:                                                  #teacher solution
+    #print("The number 2 is in the tuple")
 
 # 6. Count and Index
 #Use the count() method to find how many times a specific value appears in my_tuple. >>only works single digits!!!
@@ -71,8 +74,9 @@ result = my_tuple + another_tuple
 print("my_tuple and another_tuple joined by +: ", result)
 
 #Multiply one of your tuples by an integer and print the result to see the repeated items.
-result = other_tuple[3]*4
-print("Multiplied other_tuples index 3 with 4: ", result)
+#result = other_tuple[3]*4
+result = other_tuple*4
+print("Multiplied other_tuples with 4: ", result)
 
 
 
