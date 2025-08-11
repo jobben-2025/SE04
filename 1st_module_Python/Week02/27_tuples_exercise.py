@@ -7,14 +7,12 @@ other_tuple = (22, 23, 25, 29, 31, 33)
 #Use the print() function to display the contents of my_tuple.
 print("Contents of my_tuple: ", my_tuple)
 
-
 # 3. Access Tuple Items
 #Print the first item of the tuple using an index of 0.
 print("First item: ", my_tuple[0])
 
 #Print the last item of the tuple using a negative index.
 print("Last item: ", my_tuple[-1])
-
 
 # 4. Slice the Tuple
 #Print a slice of the tuple that includes some middle items
@@ -26,7 +24,6 @@ print("Tuples till index 3: ", my_tuple[:4])
 #Print a slice that starts at a certain index and goes to the end
 print("Tuples from index 3: ", my_tuple[3:])
 
-
 # 5. Check if an Item Exists
 #Use the in keyword to check if a certain item exists in my_tuple.
 #if "apple" in my_tuple: print("We have an apple here!")            #first solution
@@ -34,7 +31,6 @@ if "apple" in my_tuple: check_var = 1                               #2nd solutio
 
 #Print a message indicating whether the item is found
 if check_var == 1: print("Found apple!")
-
 
 # 6. Count and Index
 #Use the count() method to find how many times a specific value appears in my_tuple. >>only works single digits!!!
