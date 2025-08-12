@@ -8,7 +8,8 @@ print(f"Fruits in a set: {fruits}")
 #Check if a specific item (e.g., "apple") is in fruits using the in keyword and print a message 
 #confirming its presence or absence.
 if 'apple' in fruits: print("There is an apple in fruits.")
-
+print("apples" in fruits)       #true falsey check
+print("apple" not in fruits)
 
 # 3. Add and Update Items
 #Add a new element to fruits using the add() method. Print the set after adding.
@@ -31,7 +32,8 @@ print(f"Fruits after removing the apple: {fruits}")
 fruits.discard("coconut")
 print(f"Attempted to discard coconut from fruits with no error: {fruits}")
 
-#Use pop() to remove and print an arbitrary element from fruits. Then print the set.
+#Use pop() to remove and print an arbitrary element from fruits. 
+# Then print the set.
 fruits.pop()
 print(f"Popped out a random fruit: {fruits}")
 
@@ -59,7 +61,7 @@ intersected_items = set_a.intersection(set_b)
 print("Found common items between set_a and set_b using interection: ", intersected_items)
 
 #Difference: Use difference() to find elements in set_a not in set_b.
-different_items = set_a.difference(set_b)
+different_items = set_a.difference(set_b)       #unique items only in set_a
 print("Different items in set_a from set_b: ", different_items)
 
 #Symmetric Difference: Use symmetric_difference() to find items in either set_a or set_b, but not present in both.
