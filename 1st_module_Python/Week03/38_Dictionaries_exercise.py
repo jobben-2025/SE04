@@ -27,7 +27,7 @@ print("There is a key 'age' in my_dict: ", "age" in my_dict)
 # 4. Change and Update Dictionary Elements
 #Update the value associated with "city" directly by assignment.
 my_dict["city"] = "Stuttgart"
-print("udpate city by assignment: ", my_dict)
+print("update city by assignment: ", my_dict)
 
 #Use the update() method to change multiple key-value pairs or add new ones (e.g., add "occupation": "Engineer").
 my_dict.update({"name":"John Cena", "age":"35", "city":"Belarus"})
