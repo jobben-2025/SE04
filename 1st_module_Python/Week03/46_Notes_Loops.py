@@ -1,4 +1,4 @@
-
+#Random notes from lecture + online:
 #will print count till it reaches 3 (prints 0-2), then closing the loop
 count = 0
 while count < 3:
