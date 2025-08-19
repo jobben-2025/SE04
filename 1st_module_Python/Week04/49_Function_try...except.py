@@ -1,12 +1,15 @@
-#Error handling in Python is managed using try...except blocks, which allow you to catch and handle exceptions (errors) gracefully without crashing the program. By anticipating potential errors in a block of code, you can ensure your program continues to run or provides informative feedback when unexpected events occur.
+#Error handling in Python is managed using try...except blocks, which allow you to catch and handle exceptions 
+# (errors) gracefully without crashing the program. By anticipating potential errors in a block of code, you 
+# can ensure your program continues to run or provides informative feedback when unexpected events occur.
 
 #The code inside the try block is executed first.
 #If an exception occurs, Python stops executing the try block and jumps to the matching except block.
-#The except block can catch specific exceptions or all exceptions, allowing tailored responses to different error types.
-#Additional Clauses:
+#The except block can catch specific exceptions or all exceptions, allowing tailored responses to different 
+# error types.
 
-#else clause: Executes if no exceptions were raised in the try block.
-#finally clause: Executes no matter what, whether an exception was raised or not, often used for cleanup actions.
+#Additional Clauses:
+    #else clause: Executes if no exceptions were raised in the try block.
+    #finally clause: Executes no matter what, whether an exception was raised or not, often used for cleanup actions.
 
 def divide_10_by_n(number):
     try:
