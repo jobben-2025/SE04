@@ -124,11 +124,16 @@ class BookCollection:
     def mark_as_read(self, book_name):
         for book in self.books:
             if book.name == book_name:
-                book.read = True    #creates new attribute in book, if name exists
-                return          #returns nothing, ends here, get out of function!
-        
-        #if the condition 'if' is not fulfilled, do print following:
-        print(f"Book '{book_name}' not found in collection.")
+                book.read = True
+                return
+        print(f"Book '{book_name}' not found in the collection")
+
+    def mark_as_unread(self, book_name):
+        for book in self.books:
+            if book.name == book_name:
+                book.read = False
+                return
+        print(f"Book '{book_name}' not found in the collection")
 
 
 
@@ -145,33 +150,24 @@ class BookCollection:
 ###teacher:
     def list_books(self):
         for book in self.books:
-            if hasattr(book, "read"):       #if it has the attribute!
-                status = "Read" if book.read else "Unread"
-            #print(book)    #variant of print below
+            if hasattr(book, "read"):
+                status = "Read" if book.read else "Unread";
             else:
-                status = "Unknown"
-            print(f"Title: {self.name}, Author: {self.author}, Release year: {self.release_date}, Status: {status}")
+                status = "Unkown"
+            print(f"Title: {book.name}\nAuthor: {book.author}\nRelease year: {book.release_date}\nStatus: {status}\n")
 
 
-#create a book collection:
-new_book_collection = BookCollection(); #create new collection empty
+new_book_collection = BookCollection();
 print(new_book_collection)
 
-### adding few books to collection:
-#new_book_collection.add_book();
-#new_book = Book("Harry Potter", "J.K. Rowling", 1998)
-#print(new_book)
+
 
 new_book_collection.add_book(Book("Harry Potter", "J.K. Rowling", 1998));
-new_book_collection.add_book(Book("Bible", "Unknown", -1000));
+new_book_collection.add_book(Book("Bible", "Unkown", -1000));
 new_book_collection.add_book(Book("The Hobbit", "J.R.R. Tolkien", 1937));
 
 new_book_collection.mark_as_read("Harry Potter");
-#new_book_collection.mark_as_unread("Bible");
+new_book_collection.mark_as_unread("Bible");
 
-#new_book_collection.list_books()
-book = Book("Harry Potter", "J.K. Rowling", 1998)
-print(hasattr(book, "read"))    #use hasattr to let the object have certain attribute
-
-#new_book_collection.list_books()
+new_book_collection.list_books()
 
