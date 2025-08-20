@@ -67,18 +67,8 @@ print(fact_result)
 #Use loops and conditionals to calculate each Fibonacci number.
 #Start the sequence with 0 and 1, then build the sequence up to n terms.
 
-#def alt_fibonacci(n):
-#    fibo=0
-#    fibo_row = [1,1,2,3,5,8,13,21,34,55,89]
-#    for num in fibo_row:
-#        print(num) if num <= n else print("End reached")#
-
-        # 1.=1, 2.=1, 3.=1+1, 4.=1+2, 5.=2+3, 6.=5+3, 7.=8+5,  8.=13+8
-
-#alt_fibonacci(8)
 
 ### own solution 19.8.25 ###
-
 def fibonacci(n):
     fibo1=0
     fibo2=0
@@ -88,25 +78,29 @@ def fibonacci(n):
         fibo_result=1
         print(fibo_result)
     elif n>=3:
-         #print("1")
-         #print("1")
          fibo1=1
          fibo2=1
          for i in range(1, n+1, 1):
-              
               fibo1=fibo2
               fibo2=fibo_result
               
               fibo_result = fibo1+fibo2
-
               print(fibo_result)
 
 fibonacci(5)
 
 
+############### teacher ###############
+def fibonacci3(n):
+    fib_sequence = [];
+    a, b = 0, 1;
+    for _ in range(n):          #for i in range(n): not using i use _
+        fib_sequence.append(a);
+        a, b = b, a+b;
+    return fib_sequence; #return the whole sequence out of the function
 
-
-
+print(fibonacci3(10))
+############### /teacher ###############
 
 
 # 5. Maximum of Two Numbers
@@ -115,17 +109,30 @@ fibonacci(5)
 #Return the greater value.
 
 def max_of_two(a,b):
-    global result
-    if a>b: result=a
+    global result           #carry the result as global variable outside
+    if a>b: result = a      #change variable to 'return a' as output
     elif a<b: result=b
     elif a==b: result=a
     else:
         print("Unable to compare")
     return result
 
-max_of_two(0,19)
+max_of_two(40,19)
 print("Bigger number is: ", result)
 
+print("Using return a: ", max_of_two(40,19))
+
+
+###teacher:
+def max_of_two2(a,  b):
+    if a > b:
+        return a;
+    elif a < b:
+        return b;
+    else:
+        return "a and b are equal"      # f{a} and {b} are equal
+
+print(max_of_two2(6,16))
 
 # 6. Print a Pattern with Nested Loops
 #Design a function print_triangle(rows) that prints a right-angled triangle of asterisks (*) with a given number of rows.
@@ -144,4 +151,9 @@ def print_triangle(number_of_rows):
 
 print_triangle(5)
 
+###teacher:
+def print_triangle2(rows):
+    for i in range(1, rows+1):
+        print("*" *i);       #multiply the icon against the no. of row
 
+print(print_triangle2(7))

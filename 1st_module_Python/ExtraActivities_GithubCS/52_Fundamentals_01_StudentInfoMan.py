@@ -48,6 +48,10 @@
 global functions_active;
 global input_name;
 global age_is_ok;
+global new_student
+new_student= [];     #when adding student save data to this variable-list first, then copy into dictionary
+global all_students
+all_students= {};    #student dictionary
 
 
 functions_active = "yes"                #fuse/unfuse actual function use (main menu)
@@ -106,12 +110,31 @@ def main_menu():
 def f01add_student():
      print("1. Add student")
      #ask for full name:
-     input_name = input("Enter full name: ").title()        #capitalize word beginning each name
+     input_name = input("Enter full name '>=3 chars': ").title()        #capitalize word beginning each name
+     if len(input_name) < 3:
+          print("Too short a name, please enter 3 letters or more")
+          f01add_student()
      #ask for age:
      f01enter_age()
-     #ask for courses:
+     #ask for courses, print available courses:
      f01enter_courses()
-     print("Entered data: ", input_name, input_age, entry_courses)
+     global new_student
+     new_student = [input_name, input_age, entry_courses]
+     global all_students
+     if all_students == {}: 
+          all_students = {
+               "name": input_name, 
+               "age": input_age, 
+               "courses": entry_courses
+               }
+     else: all_students.update({
+          "name": input_name, 
+          "age": input_age, 
+          "courses": entry_courses
+          })
+     #print("Entered data: ", input_name, input_age, entry_courses)
+     print("New_student: ", new_student)
+     print("All students dict:", all_students)
      main_menu()    #return to main menu
 
 
@@ -136,25 +159,18 @@ def f01enter_age():
 
 def f01enter_courses():
      available_courses = {"Computer Science", "Python", "Java", "AI", "Painting", "CAD"}
+     print("Please type in courses which are available: ", list(available_courses))
      #available are courses from school, input are entered courses,  entry are identified courses from available ones
      global input_courses
      global entry_courses
      entry_courses = []
      input_courses = []
+     
      input_courses = input("Enter your courses, separated by ',': ")
-     #print(type(input_courses))
-     #print(input_courses)
      list(input_courses)
      for item in available_courses:
-         #for each in input_courses: 
-               #print(each, item);
                if item in input_courses:
                 entry_courses.append(item)
-     #print(type(entry_courses))
-     
-     #OPTIONAL: Print entered courses found in available courses, give input to add more courses if identified wrongly:
-     #print("Courses found in available: ", entry_courses)
-
 
 def exit():
      #print("Exit function running")
