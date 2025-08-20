@@ -17,7 +17,7 @@
     # 1. add student
         # ask for full name - format with .title()                              OK
         # ask for age - validate with .isdigit() and 15-20                      OK
-        # ask for course - input course name names (,), check typos/duplicates  OK
+        # ask for course - list available+ input course name names (,), check typos/duplicates  OK
         # input correct = split into a tuple
         # store data in student dictionary
         # append copy of student dictionary to the all-student-list
