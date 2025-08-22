@@ -18,9 +18,9 @@
         # ask for full name - format with .title()                              OK
         # ask for age - validate with .isdigit() and 15-20                      OK
         # ask for course - list available+ input course name names (,), check typos/duplicates  OK
-        # input correct = split into a tuple
-        # store data in student dictionary
-        # append copy of student dictionary to the all-student-list
+        # input correct = split into a tuple                                    ???
+        # store data in student dictionary                                      OK
+        # append copy of student dictionary to the all-student-list             OK
     # 2. view all students
         # for-loop through each student's details (name, age, courses)
         # no student exists yet > input(No students added yet. Do you
@@ -49,9 +49,9 @@ global functions_active;
 global input_name;
 global age_is_ok;
 global new_student
-new_student= [];     #when adding student save data to this variable-list first, then copy into dictionary
+new_student= {};     #when adding student save data to this variable-dict first, then copy into list of all
 global all_students
-all_students= {};    #student dictionary
+all_students = [];    #student list
 
 
 functions_active = "yes"                #fuse/unfuse actual function use (main menu)
@@ -110,6 +110,7 @@ def main_menu():
 def f01add_student():
      print("1. Add student")
      #ask for full name:
+     global input_name
      input_name = input("Enter full name '>=3 chars': ").title()        #capitalize word beginning each name
      if len(input_name) < 3:
           print("Too short a name, please enter 3 letters or more")
@@ -119,23 +120,17 @@ def f01add_student():
      #ask for courses, print available courses:
      f01enter_courses()
      global new_student
-     new_student = [input_name, input_age, entry_courses]
-     global all_students
-     if all_students == {}: 
-          all_students = {
-               "name": input_name, 
-               "age": input_age, 
-               "courses": entry_courses
-               }
-     else: all_students.update({
-          "name": input_name, 
-          "age": input_age, 
-          "courses": entry_courses
-          })
-     #print("Entered data: ", input_name, input_age, entry_courses)
-     print("New_student: ", new_student)
-     print("All students dict:", all_students)
-     main_menu()    #return to main menu
+     new_student = {"name": input_name, "age": input_age, "courses":entry_courses}
+     print("Student will be saved to database: ", new_student)
+     confirmation = input("If your data is correct, please type 'y' and press 'enter' to confirm! Otherwise restart from main menu. ")
+     #input("my text", test)
+     if confirmation == "y":
+          f01_save_new_student()     #save to all-students-list
+     else:
+          main_menu()
+     
+     #print("")
+     #main_menu()    #return to main menu
 
 
 def f01enter_age():
@@ -171,6 +166,23 @@ def f01enter_courses():
      for item in available_courses:
                if item in input_courses:
                 entry_courses.append(item)
+
+
+def f01_save_new_student():
+     global all_students
+     global new_student
+     #print(all_students)
+     #if all_students == []: 
+     #new_student_value = new_student.values
+     #print(list(new_student_value))
+     all_students.append(new_student["name"])
+     all_students.append(new_student["age"])
+     all_students.append(new_student["courses"])
+     print("Student saved to database")  #make space
+     #print("New student dict: ", new_student)
+     #print("All students list:", all_students)
+     
+
 
 def exit():
      #print("Exit function running")
