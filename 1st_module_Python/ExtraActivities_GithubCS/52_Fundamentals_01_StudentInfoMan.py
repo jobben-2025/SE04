@@ -83,7 +83,8 @@ def main_menu():
                      f01add_student()
                  case 2:
                      #2. View all students
-                     print("2. View all students")
+                     f02view_students()
+                     #print("2. View all students")
                  case 3:
                      ###3. Search student
                      print("3. Search student")
@@ -182,6 +183,13 @@ def f01_save_new_student():
      #print("New student dict: ", new_student)
      #print("All students list:", all_students)
      
+
+def f02view_students():
+     print("2. View all students")
+     global all_students
+     
+
+
 
 
 def exit():

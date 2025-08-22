@@ -1,0 +1,97 @@
+ben
+nedim
+rud
+
+
+who is dev? (create push dev branch, ruleset main+dev)
+
+-  pull requests only, feature/descr.
+- kata "8kyu",  everyone different kata
+
+
+3 functions (each kata), main.py
+
+
+
+
+git clone git-collab
+cd git-collab
+git checkout -b dev (create dev branch)
+git branch (am in dev)
+git push -u origin dev (link local   and remote dev) - only owner
+
+website: rules-ruleset (main and dev):			#first create comments  in dev main.py!
+target default, block force push
+- require pull, 1 person
+
+in local folder:
+create main.py
+(try git add commit push = should error out)
+inside main.py write which kata each one implements, as comment
+
+git checkout -b feature/sum
+
+
+def  sum(a,b):
+	return a+b
+
+print(sum(1,2))
+
+git add/commit
+
+git checkout dev
+git checkout -b feature/multiply
+git add/commit/
+
+git push -u origin feature/multiply
+git checkout feature/sum
+
+git push origin feature/sum
+
+website: create pull request (wait for 1 collab to approve)
+
+others:
+Files changed - Review changes - Approve+submit review
+
+merge OR resolve conflicts
+
+git checkout dev
+git pull dev
+
+git checkout feature/multiply
+git pull origin feature/sum (conflict, code on same line)
+
+merge on website after local
+code - all branches - delete feature branches added
+git branch -d feature/sum #delete local features added
+
+
+
+
+git checkout dev
+git merge main (merge into dev)
+
+
+
+
+
+
+
+Work in my branch:
+
+git checkout -b feature/xxxx
+
+git add/commit/
+git push -u origin feature/xxxx
+
+git pull origin dev 		(pull actual codebase to feature)
+
+git branch -d feature/xxxx
+
+
+
+
+
+
+
+
