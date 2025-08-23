@@ -28,8 +28,8 @@
             # if no, return to menu                                             OK
             # if yes, start(add student)                                        OK
     # 3. search student
-        # ask full name (lowercase comparison), if found 'details'
-        # otherwise display 'not found', type 'enter' to go to menu
+        # ask full name (lowercase comparison), if found 'details'              OK
+        # otherwise display 'not found', type 'enter' to go to menu             OK
     # 4. show statistics
         # print no. of students (len(list))
         # print set of unique courses
@@ -52,7 +52,7 @@ global new_student
 new_student= {};     #when adding student save data to this variable-dict first, then copy into list of all
 global all_students
 all_students = [];    #student list
-all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java']] ### TESTING ONLY!!!
+all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java'], 'Elise', 19, ['Java']] ### TESTING ONLY!!!
 
 functions_active = "yes"                #fuse/unfuse actual function use (main menu)
 
@@ -86,10 +86,12 @@ def main_menu():
                      #print("2. View all students")
                  case 3:
                      ###3. Search student
-                     print("3. Search student")
+                     #print("3. Search student")
+                     f03search_student()
                  case 4:
                      #4. Show statistics
-                     print("4. Show statistics")
+                     #print("4. Show statistics")
+                     f04show_statistics()
                  case 5:
                      #5. Exit confirmation menu
                      input5_value=input("Are you sure you want to exit? (yes/no)")
@@ -186,8 +188,6 @@ def f01_save_new_student():
 def f02view_students():
      print("2. View all students")
      global all_students
-     #all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java']]       #### dummy data for testing f02!
-     #print(all_students)
      if all_students == None:             #if no student was entered before,  no data:
           enter_student = input("No students in database, do you want to add student (y/n)?:")
           if enter_student == 'y':
@@ -208,6 +208,46 @@ def f02view_students():
      main_menu()
 
 
+def f03search_student():
+     print("3. Search student")
+     global all_students
+     search_student = input("Please type in full name of student to look for: ")
+     search_student = search_student.capitalize()   #if name is written lower, ValueError
+     
+     for item in all_students:
+          if type(item) == str:
+               #print(search_student.lower(), item.lower())
+               if item.lower() == search_student.lower(): #or search_student.lower() in item.lower(): #allows for partial comparison, if only name is given but full name in database
+                    position = all_students.index(search_student)
+                    print("Found student at index: ", position)
+                    details = input("Do you want to display all details of this student (y/n)?")
+                    if details == 'y':
+                         print("Name: ", all_students[position])
+                         print("Age: ", all_students[position+1])
+                         print("Courses: ", all_students[position+2])
+               else:
+                    input("not found, press 'enter' to return main menu")   #why 3 times? Python?
+                    
+     main_menu()
+
+
+def f04show_statistics():
+     print("4. Show statistics")
+     # print no. of students (len(list))
+     # print set of unique courses
+     # nested loop: print how many students are in each course
+     # print courses with highest occupancy
+     # print courses with lowest occupancy
+     # print courses without student
+     # type 'enter' to return to menu
+     global all_students
+     no_of_students = len(all_students) /3      #every 3rd element is a student (name, age, course)
+     print("No. of students: ", no_of_students)
+     
+
+
+                     
+                   
 def exit():
      #print("Exit function running")
      global functions_active
@@ -215,5 +255,10 @@ def exit():
 
 
 ### calling main_menu function if script functions active allowed:
-if functions_active == "yes": main_menu()
+#if functions_active == "yes": main_menu()
 
+
+
+
+##### TESTING:
+f04show_statistics()
