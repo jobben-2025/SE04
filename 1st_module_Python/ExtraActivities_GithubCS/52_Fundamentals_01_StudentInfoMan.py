@@ -52,7 +52,11 @@ global new_student
 new_student= {};     #when adding student save data to this variable-dict first, then copy into list of all
 global all_students
 all_students = [];    #student list
-all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java'], 'Elise', 19, ['Java']] ### TESTING ONLY!!!
+all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java'], 'Elise', 19, ['CAD']] ### TESTING ONLY!!!
+
+global available_courses
+available_courses = {"Computer Science", "Python", "Java", "AI", "Painting", "CAD"}
+available_courses = sorted(available_courses)
 
 functions_active = "yes"                #fuse/unfuse actual function use (main menu)
 
@@ -155,7 +159,8 @@ def f01enter_age():
 
 
 def f01enter_courses():
-     available_courses = {"Computer Science", "Python", "Java", "AI", "Painting", "CAD"}
+     global available_courses
+     #available_courses = {"Computer Science", "Python", "Java", "AI", "Painting", "CAD"} #moved to top
      print("Please type in courses which are available: ", list(available_courses))
      #available are courses from school, input are entered courses,  entry are identified courses from available ones
      global input_courses
@@ -233,21 +238,61 @@ def f03search_student():
 
 def f04show_statistics():
      print("4. Show statistics")
-     # print no. of students (len(list))
-     # print set of unique courses
-     # nested loop: print how many students are in each course
-     # print courses with highest occupancy
-     # print courses with lowest occupancy
-     # print courses without student
-     # type 'enter' to return to menu
+
      global all_students
      no_of_students = len(all_students) /3      #every 3rd element is a student (name, age, course)
-     print("No. of students: ", no_of_students)
+     print("No. of students: ", int(no_of_students))
+     print("Courses available: ", available_courses)
+     print("")
+     if all_students != None:
+          courses_list = []
+          temporary_list = []
+          for item in all_students:
+            #print(type(item))
+            if type(item) == list:
+                courses_list = courses_list + item
+            else:
+                 pass
+          #print(courses_list)
+          #print("", sorted(available_courses))
+          courses_attended = ""
+          courses_unattended =""
+          max_occupancy = 0
+          max_occu_name = ""
+          min_occupancy = 100
+          min_occu_name = ""
+          
+          #go through all items, list counts:
+          print("Courses in total, with subscription:")
+          for item in available_courses:            #for available course count items in course list:
+               print(f"{item}: {courses_list.count(item)}x")
+
+               if courses_list.count(item) > max_occupancy:
+                    max_occupancy = courses_list.count(item)
+                    max_occu_name = item
+               
+               if courses_list.count(item) < min_occupancy and courses_list.count(item) > 0:
+                    min_occupancy = courses_list.count(item)
+                    min_occu_name = item
+               
+               if courses_list.count(item) == 0:
+                    courses_unattended += item + ", "
+
+               if courses_list.count(item) > 0:
+                courses_attended += item + ", "
+ 
+          print("")
+          print(f"Attended courses: ", courses_attended)
+          print(f"Unattended courses: ", courses_unattended)
+          print("")
+          print(f"Max occupancy course: {max_occu_name} with {max_occupancy}")
+          print(f"Min occupancy course: {min_occu_name} with {min_occupancy}")
      
+     input("press 'enter' to return main menu")   #why 3 times? Python?
+                    
+     main_menu()     
 
 
-                     
-                   
 def exit():
      #print("Exit function running")
      global functions_active
@@ -255,10 +300,8 @@ def exit():
 
 
 ### calling main_menu function if script functions active allowed:
-#if functions_active == "yes": main_menu()
-
-
+if functions_active == "yes": main_menu()
 
 
 ##### TESTING:
-f04show_statistics()
+#f04show_statistics()
