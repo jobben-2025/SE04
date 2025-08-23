@@ -22,11 +22,11 @@
         # store data in student dictionary                                      OK
         # append copy of student dictionary to the all-student-list             OK
     # 2. view all students
-        # for-loop through each student's details (name, age, courses)
-        # no student exists yet > input(No students added yet. Do you
-        # wish to add one now? (yes/no))
-            # if no, return to menu
-            # if yes, start(add student)
+        # for-loop through each student's details (name, age, courses)          OK
+        # no student exists yet > input(No students added yet. Do you           OK
+        # wish to add one now? (yes/no))                                        OK
+            # if no, return to menu                                             OK
+            # if yes, start(add student)                                        OK
     # 3. search student
         # ask full name (lowercase comparison), if found 'details'
         # otherwise display 'not found', type 'enter' to go to menu
@@ -52,10 +52,9 @@ global new_student
 new_student= {};     #when adding student save data to this variable-dict first, then copy into list of all
 global all_students
 all_students = [];    #student list
-
+all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java']] ### TESTING ONLY!!!
 
 functions_active = "yes"                #fuse/unfuse actual function use (main menu)
-
 
 def main_menu():
         if functions_active == "yes":
@@ -130,8 +129,8 @@ def f01add_student():
      else:
           main_menu()
      
-     #print("")
-     #main_menu()    #return to main menu
+     print("")
+     main_menu()    #return to main menu
 
 
 def f01enter_age():
@@ -187,9 +186,26 @@ def f01_save_new_student():
 def f02view_students():
      print("2. View all students")
      global all_students
+     #all_students = ['Ben', 15, ['Python', 'AI'], 'John', 16, ['AI', 'Java']]       #### dummy data for testing f02!
+     #print(all_students)
+     if all_students == None:             #if no student was entered before,  no data:
+          enter_student = input("No students in database, do you want to add student (y/n)?:")
+          if enter_student == 'y':
+               f01add_student()
+          else:
+               main_menu()
+        
+     for item in all_students:      #go through all entries, print text def. by detected datatype:
+          if type(item) == str:
+               print("Name: ", item)
+          elif type(item) == int:
+               print("Age: ", item)
+          elif type(item) == list:
+               print("Courses: ", item)
+          else:
+               print("Error datatype.....")
      
-
-
+     main_menu()
 
 
 def exit():
@@ -200,5 +216,4 @@ def exit():
 
 ### calling main_menu function if script functions active allowed:
 if functions_active == "yes": main_menu()
-
 
