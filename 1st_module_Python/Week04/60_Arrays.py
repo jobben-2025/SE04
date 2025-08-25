@@ -46,3 +46,38 @@ Expected 60 bytes in 32bit systems and 120 bytes in 64bit systems
 print(f"{sys.getsizeof(my_list)} bytes")
 
 
+
+#So, how much memory are we using for a 4 integer list?
+import sys
+ 
+my_list = [1, 2, 3, 4]
+size = sys.getsizeof(my_list)
+ 
+for x in my_list:
+  print(f"{x} is {sys.getsizeof(x)} bytes")
+  size += sys.getsizeof(x)
+ 
+print(f"{size} bytes") # 108 bytes in 32bit systems and 200 bytes in 64bit systems.
+
+
+
+
+#1. Comparison-based Sorting Algorithms:
+#BUB - Bubble Sort,
+#SEL - Selection Sort,
+#INS - Insertion Sort,
+#MER - Merge Sort (recursive implementation),
+#QUI - Quick Sort (recursive implementation),
+#R-Q - Random Quick Sort (recursive implementation).
+
+#2. Not Comparison-based Sorting Algorithms:
+#COU - Counting Sort,
+#RAD - Radix Sort.
+
+
+#You need to already understand/remember all these:
+#-. Logarithm and Exponentiation, e.g., log2(1024) = 10, 210 = 1024
+#-. Arithmetic progression, e.g., 1+2+3+4+…+10 = 10*11/2 = 55
+#-. Geometric progression, e.g., 1+2+4+8+..+1024 = 1*(1-211)/(1-2) = 2047
+#-. Linear/Quadratic/Cubic function, e.g., f1(x) = x+2, f2(x) = x2+x-1, f3(x) = x3+2x2-x+7
+#-. Ceiling, Floor, and Absolute function, e.g., ceil(3.1) = 4, floor(3.1) = 3, abs(-7) = 7
