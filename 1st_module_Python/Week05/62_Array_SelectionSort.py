@@ -1,16 +1,22 @@
 #How It Works
 
-#Find the Lowest Value: Traverse the array (or subarray) to locate the smallest element among the unsorted portion.
+#Find the Lowest Value: Traverse the array (or subarray) to locate the smallest element among the 
+# unsorted portion.
 #Swap to the Front: Swap this smallest element with the first element of the unsorted portion.
-#Repeat: Narrow the unsorted portion by one, moving the boundary of the sorted portion forward. Continue until all elements are in their correct positions.
+#Repeat: Narrow the unsorted portion by one, moving the boundary of the sorted portion forward. 
+# Continue until all elements are in their correct positions.
 
-#ensures each lowest element in the remaining unsorted portion is placed at the start of that subarray, gradually building a fully sorted array.
+#ensures each lowest element in the remaining unsorted portion is placed at the start of that 
+# subarray, gradually building a fully sorted array.
 
 #Breakdown
 
-#Idea: During each pass, Selection Sort picks the lowest element of the unsorted subarray and places it in its correct position by swapping.
-#No Early Termination: Even if the array becomes sorted earlier, Selection Sort will still continue until it completes all passes for each element.
-#Swaps Count: At most n−1 swaps occur because you perform exactly one swap per pass (unless the smallest element is already in place).
+#Idea: During each pass, Selection Sort picks the lowest element of the unsorted subarray and 
+# places it in its correct position by swapping.
+#No Early Termination: Even if the array becomes sorted earlier, Selection Sort will still 
+# continue until it completes all passes for each element.
+#Swaps Count: At most n−1 swaps occur because you perform exactly one swap per pass (unless 
+# the smallest element is already in place).
 
 #====== compare 1st + 2nd, swap if needed = 1st no. is sorted, compare 2nd to 3rd etc.
 
@@ -35,10 +41,12 @@ print("Sorted Array:", sorted_array) # Sorted Array: [11, 12, 22, 25, 64]
 #Big O Analysis
 
 #Worst Case:  (Reversed Array) - (On2)
-#Explanation: When the array is in descending order, you need to find the lowest and require a swap on every pass.
+#Explanation: When the array is in descending order, you need to find the lowest and require 
+# a swap on every pass.
 
 #Best Case:  - (On2) !!!
-#Explanation: Even if the array is already sorted, Selection Sort still checks every element in the unsorted subarray. No early termination.
+#Explanation: Even if the array is already sorted, Selection Sort still checks every element 
+# in the unsorted subarray. No early termination.
 #Swaps: No swaps needed.
 
 #Average Case:  - (On2)

@@ -1,6 +1,10 @@
-ben
-nedim
-rud
+
+- sort functions 1-3 coding today + articles reading
+62.1, 63.1, 64
+- meet 3p.m. (GoogleMeet)
+
+
+
 
 
 who is dev? (create push dev branch, ruleset main+dev)

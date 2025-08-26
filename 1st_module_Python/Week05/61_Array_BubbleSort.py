@@ -12,9 +12,12 @@
 
 #Key Points:
 
-#Nested Loops: Bubble Sort typically uses two nested loops—the outer loop for the number of passes and the inner loop for comparing and swapping elements.
-#Early Termination: An optimization can be added to stop the algorithm if a pass completes without any swaps, indicating that the list is already sorted.
-#Stability: Bubble Sort is a stable sort, meaning that it preserves the relative order of equal elements.
+#Nested Loops: Bubble Sort typically uses two nested loops—the outer loop for the number of 
+# passes and the inner loop for comparing and swapping elements.
+#Early Termination: An optimization can be added to stop the algorithm if a pass completes 
+# without any swaps, indicating that the list is already sorted.
+#Stability: Bubble Sort is a stable sort, meaning that it preserves the relative order of 
+# equal elements.
 
 
 def bubble_sort(arr):

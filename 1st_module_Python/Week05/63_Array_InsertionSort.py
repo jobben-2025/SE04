@@ -1,9 +1,13 @@
-#Insertion Sort is a comparison-based sorting algorithm that builds the sorted array (or subarray) one item at a time. In each pass, it inserts the current element into the appropriate position in the already sorted portion of the array. While it has a worst-case complexity of , it can be much faster for nearly sorted data, sometimes approaching ,
+#Insertion Sort is a comparison-based sorting algorithm that builds the sorted array (or subarray) 
+# one item at a time. In each pass, it inserts the current element into the appropriate position 
+# in the already sorted portion of the array. While it has a worst-case complexity of , it can be 
+# much faster for nearly sorted data, sometimes approaching ,
 
 #How It Works
 
 #Consider the first element of the array as already sorted.
-#Take the next element (the first unsorted) and compare it with the elements of the sorted subarray from right to left.
+#Take the next element (the first unsorted) and compare it with the elements of the sorted 
+# subarray from right to left.
 #Shift all elements that are greater than this new element one position to the right.
 #Insert the new element into the correct position.
 #Repeat steps 2–4 for all remaining elements until the entire array is sorted.
