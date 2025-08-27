@@ -9,6 +9,12 @@ tic-tac-toe
 
 
 
+Friday:
+-lecture
+-catch-up  activities
+
+
+
 
 extra_52_ 001-004
 
@@ -30,6 +36,7 @@ cd git-collab
 git checkout -b dev (create dev branch)
 git branch (am in dev)
 git push -u origin dev (link local   and remote dev) - only owner
+git pull -u origin dev (pull from remote dev)
 
 website: rules-ruleset (main and dev):			#first create comments  in dev main.py!
 target default, block force push
