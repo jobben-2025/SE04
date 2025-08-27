@@ -80,13 +80,54 @@
 global keep_program_running
 keep_program_running = 1
 
-global 
+global all_books_list
+all_books_list = []          #empty to begin with, later filled with some example books
+
+
+def add_book():
+        
+    print("")
+    print("1. Add a Book")
+    print("")
+    entered_title = input("Enter the book's title: ")
+    entered_author = input("Enter the author: ")
+    entered_year = (input("Enter the published year: "))
+    if entered_year.isdigit() == False:
+        entered_year = None
+    entered_genre = input("Enter the genre: ")
+    new_book_dict = {"Title": entered_title, "Author": entered_author, "Year": entered_year, "Genre": entered_genre}
+    print(entered_year.isnumeric())
+    print(f"The new book {entered_title}, published by {entered_author} in {entered_year} is from genre {entered_genre}.")
+    #save the book to the all_books_list
+    print("Dictionary created: ", new_book_dict)
+    global all_books_list
+    all_books_list = all_books_list + entered_title + entered_author + entered_year + entered_genre
+    print("All books so far: ", all_books_list)
+    ###############################
+    # not printing all_books_list # 
+    ###############################
+
+
+
+
+
+
+    #choose if continue to add, if yes set 'continue_adding' True, otherwise false
+    continue_adding = True if input("Want to add another book? y/n") == "y" else False
+    if continue_adding == True:
+        add_book()
+    else:
+        main_menu()
+    
+    return
+
 
 
 
 
 def main_menu():
     global keep_program_running
+
     if keep_program_running == 1:
 
         print("")
@@ -101,7 +142,7 @@ def main_menu():
         user_input = int(input("Please select a menu option and press 'enter': "))
 
         if user_input == 1:
-            pass
+            add_book()
         elif user_input == 2:
             pass
         elif user_input == 3:
