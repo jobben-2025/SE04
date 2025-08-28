@@ -82,10 +82,10 @@ keep_program_running = 1
 
 global all_books_list
 all_books_list = []          #empty to begin with, later filled with some example books
+all_books_list = ['Title1', 'Author1', '1999', 'Genre1', 'Title2', 'Author2', '2000', 'Genre2', 'Title3', 'Author3', None, 'Genre3'] #TESTING only!
 
 
 def add_book():
-        
     print("")
     print("1. Add a Book")
     print("")
@@ -115,6 +115,26 @@ def add_book():
     
     return
 
+def view_all_books():
+    global all_books_list
+    print("")
+    print("2. View All Books")
+    print("")
+    
+    count_items = 0
+    for book in all_books_list:
+        count_items += all_books_list.count(book)
+    amount_books = int(count_items/4)
+    print(f"Currenty the library holds {amount_books} books.")
+    print("")
+    for i in range(0, count_items, 4):
+        print(f"Title: {all_books_list[i]}")
+        print(f"Author: {all_books_list[i+1]}")
+        print(f"Year: {all_books_list[i+2]}")
+        print(f"Genre: {all_books_list[i+3]}")
+        print("")
+        
+
 
 
 
@@ -138,7 +158,7 @@ def main_menu():
         if user_input == 1:
             add_book()
         elif user_input == 2:
-            pass
+            view_all_books()
         elif user_input == 3:
             pass
         elif user_input == 4:
