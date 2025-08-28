@@ -96,22 +96,16 @@ def add_book():
         entered_year = None
     entered_genre = input("Enter the genre: ")
     new_book_dict = {"Title": entered_title, "Author": entered_author, "Year": entered_year, "Genre": entered_genre}
-    print(entered_year.isnumeric())
     print(f"The new book {entered_title}, published by {entered_author} in {entered_year} is from genre {entered_genre}.")
     #save the book to the all_books_list
-    print("Dictionary created: ", new_book_dict)
+    print("Dictionary for this book created: ", new_book_dict)
     global all_books_list
-    all_books_list = all_books_list + entered_title + entered_author + entered_year + entered_genre
-    print("All books so far: ", all_books_list)
-    ###############################
-    # not printing all_books_list # 
-    ###############################
-
-
-
-
-
-
+    all_books_list.append(entered_title)
+    all_books_list.append(entered_author)
+    all_books_list.append(entered_year)
+    all_books_list.append(entered_genre)
+    print("All books list has been updated with this book.")
+    
     #choose if continue to add, if yes set 'continue_adding' True, otherwise false
     continue_adding = True if input("Want to add another book? y/n") == "y" else False
     if continue_adding == True:
