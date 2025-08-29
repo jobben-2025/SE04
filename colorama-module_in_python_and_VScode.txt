@@ -1,0 +1,13 @@
+fix python module error/probs on macos:
+brew install --cask anaconda
+
+conda init zsh #from /opt/brew/anaconda3; or do:
+export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+necessary for PATH variable
+
+once zsh can do conda --version
+=> conda install -c anaconda colorama
+
+VScode help window, execute command, then type "selected interpreter" to show 
+available python instances locally (has brew, conda, and /usr/bin/python3) - select:
+/opt/homebrew/anaconda3/bin/python (CONDA with colorama package!)

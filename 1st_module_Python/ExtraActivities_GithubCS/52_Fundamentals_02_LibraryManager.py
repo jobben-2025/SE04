@@ -69,7 +69,7 @@
 #show_statistics(library, authors, genres)                                          
 #Print total number of books.                                                       OK                                          
 #Print all unique authors.                                                          OK
-#Nested loop to count how many books per genre. (set in all_books count)            
+#Nested loop to count how many books per genre.                                                
 
 #confirm_exit()                                                                     OK              
 #Ask "Are you sure you want to exit? (yes/no)".                                     OK
@@ -180,7 +180,16 @@ def show_statistics():
     for each in genre_set:
         print(each)
     print("")
-    #Genre counts
+    
+    
+    ########### Genre counts
+    for genre in genre_set:
+            
+            for each in all_books_list:
+
+                if each == genre:
+                    #print(genre, each.count(genre))
+                    
     
     
 
